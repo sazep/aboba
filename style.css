@@ -1,14 +1,19 @@
 body {
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
 }
 
 header {
     width: 100%;
     height: 100vh;
-    background: url(header_bg.webp);
-    background-size: cover;
+    background: url(header_bg.webp) no-repeat center center/cover;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .header_left {
@@ -18,10 +23,10 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     padding: 0 5vw;
     box-sizing: border-box;
-    text-align: right;
+    text-align: center;
 }
 
 .header_left p {
@@ -30,8 +35,9 @@ header {
 
 .bio {
     width: 60%;
+    margin: 0 auto;
+    line-height: 1.5;
 }
-
 
 .header_right {
     width: 35%;
@@ -44,15 +50,22 @@ header {
 
 .header_btn {
     cursor: pointer;
+    padding: 10px 20px;
+    border: 2px solid #fff;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .header_btn:hover {
     transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.3);
 }
 
 main {
     width: 100%;
     height: auto;
+    background-color: #f5f5f5;
 }
 
 section {
@@ -61,33 +74,41 @@ section {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 0 6vw;
+    padding: 3em 6vw;
     box-sizing: border-box;
     min-height: 50vh;
 }
 
 section h1 {
     font-size: 4em;
+    margin-bottom: 0.5em;
 }
 
 .section_row {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
+
 .section_item {
     height: 10vw;
-    margin: 0 4em 4em 4em;
+    margin: 2em;
+    transition: transform 0.3s ease;
 }
 
 .section_item img {
     height: 100%;
 }
 
+.section_item:hover {
+    transform: scale(1.05);
+}
 
 .projects {
     color: white;
     background: black;
+    padding: 3em 0;
 }
 
 .github:hover {
@@ -102,8 +123,11 @@ footer {
     background-image: url(footer_bg.png);
     background-size: cover;
     background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
 }
-
 
 .footer_content {
     width: 100%;
@@ -113,5 +137,8 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    text-align: center;
+    font-size: 1.2em;
+    padding: 0 2vw;
+    box-sizing: border-box;
 }
