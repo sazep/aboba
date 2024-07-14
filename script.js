@@ -1,39 +1,46 @@
-// Define a function to handle the header button click
-function toggleBio() {
-    const bio = document.querySelector('.bio');
-    bio.style.display = bio.style.display === 'none' ? 'block' : 'none';
-}
+console.clear();
 
-// Add event listener to the header button
-document.querySelector('.header_btn').addEventListener('click', toggleBio);
+const cardsContainer = document.querySelector(".cards");
+const cardsContainerInner = document.querySelector(".cards__inner");
+const cards = Array.from(document.querySelectorAll(".card"));
+const overlay = document.querySelector(".overlay");
 
-// Anime.js animations
-anime({
-    targets: '.header_left h1',
-    translateX: [0, 250],
-    duration: 2000,
-    easing: 'easeInOutExpo'
+const applyOverlayMask = (e) => {
+  const overlayEl = e.currentTarget;
+  const x = e.pageX - cardsContainer.offsetLeft;
+  const y = e.pageY - cardsContainer.offsetTop;
+
+  overlayEl.style = `--opacity: 1; --x: ${x}px; --y:${y}px;`;
+};
+
+const createOverlayCta = (overlayCard, ctaEl) => {
+  const overlayCta = document.createElement("div");
+  overlayCta.classList.add("cta");
+  overlayCta.textContent = ctaEl.textContent;
+  overlayCta.setAttribute("aria-hidden", true);
+  overlayCard.append(overlayCta);
+};
+
+const observer = new ResizeObserver((entries) => {
+  entries.forEach((entry) => {
+    const cardIndex = cards.indexOf(entry.target);
+    let width = entry.borderBoxSize[0].inlineSize;
+    let height = entry.borderBoxSize[0].blockSize;
+
+    if (cardIndex >= 0) {
+      overlay.children[cardIndex].style.width = `${width}px`;
+      overlay.children[cardIndex].style.height = `${height}px`;
+    }
+  });
 });
 
-anime({
-    targets: '.skills .section_item img',
-    scale: [0.5, 1],
-    duration: 2000,
-    delay: anime.stagger(200, {start: 500}),
-    easing: 'easeInOutElastic(1, .5)'
-});
+const initOverlayCard = (cardEl) => {
+  const overlayCard = document.createElement("div");
+  overlayCard.classList.add("card");
+  createOverlayCta(overlayCard, cardEl.lastElementChild);
+  overlay.append(overlayCard);
+  observer.observe(cardEl);
+};
 
-anime({
-    targets: '.projects .section_item img',
-    rotate: '1turn',
-    duration: 2000,
-    easing: 'easeInOutSine'
-});
-
-anime({
-    targets: '.contacts .section_item img',
-    opacity: [0, 1],
-    duration: 3000,
-    easing: 'easeInOutQuad',
-    delay: anime.stagger(500, {start: 1000})
-});
+cards.forEach(initOverlayCard);
+document.body.addEventListener("pointermove", applyOverlayMask);
