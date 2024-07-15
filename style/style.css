@@ -3,6 +3,8 @@
     --main-dark: #1c1c24;
     /* Основний світлий колір */
     --main-light-text: #ffffff;
+    /* более светлый серый */
+    --main-light-green-text: #bbb0b0;
     /* колір основного тексту */
     --main-dark-text: #212121;
     /*  колір другорядного тексту */
@@ -10,15 +12,19 @@
     /* footer */
     --m: 4rem;
     /* card */
-    --main-card:#2b2b2b;
+    --main-card: #2b2b2b;
     --border-card: #eceff133;
-    --hsl: var(--main-dark)
+    --hsl: var(--main-dark);
+    /* loader */
+    --loader-size: 50px;
+    --loader-border-size: 4px;
+    --loader-border-color: white;
 }
 
 /* шрифт */
-@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800;900&display=swap");
 
 body {
+    font-size: 14pt;
     margin: 0;
     padding: 0;
     font-family: "League Spartan", system-ui, sans-serif;
@@ -29,15 +35,95 @@ body {
 }
 
 header {
+    font-size: 16pt;
     width: 100%;
-    /* background: url(/src/header_bg2.webp) no-repeat center center/cover; */
     background-color: var(--main-dark);
     display: flex;
-    align-items: center;
-    justify-content: center;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
+
+
+/* nav-bar */
+.navbar-dark {
+    width: 80%;
+    float: left;
+    display: flex;
+    line-height: 220%;
+}
+
+.left-start {
+    margin-top: 20px;
+    float: left;
+}
+
+.right-end {
+    width: 100%;
+}
+
+.navbar-nav {
+    justify-content: flex-end;
+    display: flex;
+}
+
+.nav-item {
+    margin: 30px;
+    position: relative;
+}
+
+.nav-links {
+    color: var(--main-light-green-text);
+    text-decoration: none;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.nav-links:hover {
+    color: var(--main-light-text);
+}
+
+.nav-links::before,
+.nav-links::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+.nav-links::after {
+    left: 0;
+    background-color: #f25757;
+}
+
+.nav-links::before {
+    left: 0;
+    background-color: #235aa6;
+    transition-delay: 0.1s;
+}
+
+.nav-links:hover::before {
+    width: 100%;
+}
+
+.nav-links:hover::after {
+    width: 100%;
+    transition-delay: 0.1s;
+}
+
+.nav-links:not(:hover)::before {
+    width: 0;
+    transition-delay: 0.3s;
+}
+
+.nav-links:not(:hover)::after {
+    width: 0;
+    transition-delay: 0.1s;
+}
+
 /* 
 .header_left {
     width: 65%;
@@ -72,6 +158,7 @@ header {
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
+
 footer {
     background-color: var(--main-dark);
     color: white;
@@ -142,7 +229,7 @@ footer::before {
     border-radius: calc(0.5 * var(--m))
 }
 
-img {
+.footer-img {
     height: calc(0.3 * var(--m));
     object-fit: cover;
 }
@@ -321,17 +408,68 @@ ul {
 /* повяление текста */
 
 .fade-in {
-    opacity: 0; /* начальное значение непрозрачности */
-    animation: fadeIn ease-in 1; /* добавляем анимацию fadeIn */
-    animation-fill-mode: forwards; /* будет видимым после завершения анимации */
-    animation-duration: 1s; /* длительность анимации в 1 секунду */
-  }
-  
-  @keyframes fadeIn {
+    opacity: 0;
+    /* начальное значение непрозрачности */
+    animation: fadeIn ease-in 1;
+    /* добавляем анимацию fadeIn */
+    animation-fill-mode: forwards;
+    /* будет видимым после завершения анимации */
+    animation-duration: 1s;
+    /* длительность анимации в 1 секунду */
+}
+
+@keyframes fadeIn {
     0% {
-      opacity: 0;
+        opacity: 0;
     }
+
     100% {
-      opacity: 1;
+        opacity: 1;
     }
-  }
+}
+
+/* стили для загрузки html loader */
+.load-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--main-dark);
+}
+
+.loader {
+    width: var(--loader-size);
+    height: var(--loader-size);
+    border: var(--loader-border-size) solid var(--loader-border-color);
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    position: relative;
+    animation: rotateX 1s infinite linear;
+}
+
+.loader::before {
+    content: "";
+    border: var(--loader-border-size) solid var(--loader-border-color);
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-radius: 500%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    animation: rotateX 0.5s infinite linear reverse;
+}
+
+@keyframes rotateX {
+    from {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
+}
