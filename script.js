@@ -1,11 +1,16 @@
 window.addEventListener('load', () => {
-  document.querySelector(body-load-after).style.overflowY = "hidden"
-  alert("vse ok")
-  setTimeout(2000,()=>{
+  document.querySelector(".body-load-after").style.overflowY = "hidden"
+  setTimeout(function () {
+    document.querySelector(".body-load-after").style.overflowY = "hidden"
+  }, 300)
+  setTimeout(function () {
+    document.querySelector(".body-load-after").style.overflowY = "hidden"
+  }, 600)
+  setTimeout(function () {
+    document.querySelector(".body-load-after").style.overflowY = "hidden"
     document.body.style.overflowY = 'visible'
-    document.querySelector(load-main).style.display = "none"
-    alert("xz")
-  })
+    document.querySelector(".load-main").style.display = "none"
+  }, 800)
 })
 // следить за курсоро чтоб красиво менюшки переливались
 // console.clear()
@@ -54,3 +59,54 @@ const initOverlayCard = (cardEl) => {
 
 cards.forEach(initOverlayCard)
 document.body.addEventListener("pointermove", applyOverlayMask)
+
+// анимация тексту
+window.onload = function () {
+  setTimeout(function () {
+    anime({
+      targets: '.text-loading-overlay',
+      translateX: '100%',
+      duration: 1000,
+      easing: 'easeInOutQuad',
+      complete: function () {
+        let hiddenTexts = document.querySelectorAll('.hidden-text')
+        hiddenTexts.forEach((text) => {
+          text.style.visibility = 'visible'
+        })
+      }
+    })
+  }, 5000)
+}
+
+// language
+let currentLanguage = 'en'; // Начальный язык
+let translations = {}; // Объект для хранения переводов
+
+function loadTranslations(lang) {
+    fetch(`translations/${lang}.json`)
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            translations[lang] = data; // Сохраняем переводы в объект
+            updateText(); // Обновляем текст после загрузки
+        })
+}
+
+function toggleLanguage() {
+    currentLanguage = currentLanguage === 'en' ? 'ua' : 'en'; // Переключаем язык
+    updateText();
+}
+
+function updateText() {
+    document.querySelectorAll('[data-lang]').forEach(el => {
+        el.innerHTML = translations[currentLanguage][el.getAttribute('data-lang')];
+    });
+}
+
+// Загружаем переводы для начального языка
+loadTranslations(currentLanguage);
+
+
+// Установить начальный язык
+updateText()
