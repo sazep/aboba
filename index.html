@@ -16,7 +16,7 @@
     <header>
         <nav class="navbar-dark">
             <div class="left-start">
-                <a href="index.html">
+                <a class="icon">
                     <img src="src/ico.ico" width="180" height="120" alt="">
                 </a>
             </div>
@@ -38,9 +38,9 @@
                         <a class="nav-links" data-lang="Language">English</a>
                     </li>
                     <li class="nav-item">
-                        <a class="language-switcher-wrapper" href="#language" onclick="toggleLanguage()">
-                            <img src="https://img.icons8.com/?size=100&id=10739&format=png&color=FFFFFF"
-                                width="50" height="50">
+                        <a class="language-switcher-wrapper" onclick="toggleLanguage()">
+                            <img src="https://img.icons8.com/?size=100&id=10739&format=png&color=FFFFFF" width="50"
+                                height="50">
                         </a>
                     </li>
                 </ul>
@@ -89,15 +89,15 @@
             </div>
         </div>
         <div id="Products">
-            <h1 class="main__heading">Pricing</h1>
+            <h1 data-lang="Products" class="main__heading">Products</h1>
             <div class="main__cards cards">
                 <div class="cards__inner">
                     <div class="cards__card card">
                         <h2 class="card__heading">Basic</h2>
                         <p class="card__price">$9.99</p>
                         <ul role="list" class="card__bullets flow">
-                            <li>Access to standard workouts and nutrition plans</li>
-                            <li>Email support</li>
+                            <li></li>
+                            <li data-lang="Email support">Email support</li>
                         </ul>
                         <a href="#basic" class="card__cta cta">Get Started</a>
                     </div>
@@ -106,9 +106,9 @@
                         <h2 class="card__heading">Pro</h2>
                         <p class="card__price">$19.99</p>
                         <ul role="list" class="card__bullets flow">
-                            <li>Access to advanced workouts and nutrition plans</li>
-                            <li>Priority Email support</li>
-                            <li>Exclusive access to live Q&A sessions</li>
+                            <li></li>
+                            <li></li>
+                            <li data-lang="Priority Email support">Priority Email support</li>
                         </ul>
                         <a href="#pro" class="card__cta cta">Upgrade to Pro</a>
                     </div>
@@ -117,10 +117,10 @@
                         <h2 class="card__heading">Ultimate</h2>
                         <p class="card__price">$29.99</p>
                         <ul role="list" class="card__bullets flow">
-                            <li>Access to all premium workouts and nutrition plans</li>
-                            <li>24/7 Priority support</li>
-                            <li>1-on-1 virtual coaching session every month</li>
-                            <li>Exclusive content and early access to new features</li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li data-lang="24/7 Priority support">24/7 Priority support</li>
                         </ul>
                         <a href="#ultimate" class="card__cta cta">Go Ultimate</a>
                     </div>
@@ -140,37 +140,34 @@
             <p>links <span style="color: #BA6573;">❤</span> sz</p>
             <div class="social">
                 <a href="https://github.com/sazep" target="_blank" class="link"><img class="footer-img"
-                        src="/src/github-mark-white.png" alt="" /></a>
+                        src="src\github-mark-white.png" alt="" /></a>
                 <a href="https://t.me/sazziTut" target="_blank" class="link"><img class="footer-img"
-                        src="src/telegram.svg" alt="" /></a>
+                        src="src\svg\telegram.svg" alt="" /></a>
                 <a href="https://www.instagram.com/sazep_7_/" target="_blank" class="link"><img class="footer-img"
-                        src="src/instargam.svg" alt="" /></a>
+                        src="src\svg\instargam.svg" alt="" /></a>
             </div>
             <p style="color: #818181; font-size: smaller">2024 © sazep</p>
         </div>
         <div class="col col2">
             <a href="#AboutMe">
-                <p>About</p>
+                <p data-lang="AboutMe">About Me</p>
             </a>
-            <a href="#"></a>
-            <p>Privacy Policy</p></a>
-            <a href="#"></a>
-            <p></p></a>
-            <a href="#"></a>
-            <p></p></a>
-        </div>
-        <div class="col col3">
             <a href="#Products">
-                <p>Services</p>
+                <p data-lang="Products">Services</p>
             </a>
             <a href="#Project">
-                <p>Products</p>
+                <p data-lang="Project">Project</p>
+            </a>
+        </div>
+        <div class="col col3">
+            <a href="#">
+                <p data-lang="Privacy Policy">Privacy Policy</p>
             </a>
             <a href="#footer">
-                <p>Join our team</p>
+                <p data-lang="Join our team">Join our team</p>
             </a>
             <a href="#footer">
-                <p>Partner with us</p>
+                <p data-lang="Partner with us">Partner with us</p>
             </a>
         </div>
         <div class="backdrop"></div>

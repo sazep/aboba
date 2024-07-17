@@ -330,7 +330,7 @@ ul {
 
 .card__bullets li::before {
     display: inline-block;
-    content: url(/src/correct.svg);
+    content: url(/src/svg/correct.svg);
     transform: translatey(0.25ch);
     margin-right: 1ch;
 }

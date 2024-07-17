@@ -1,4 +1,5 @@
 window.addEventListener('load', () => {
+  scrollTo(0, 0)
   document.querySelector(".body-load-after").style.overflowY = "hidden"
   setTimeout(function () {
     document.querySelector(".body-load-after").style.overflowY = "hidden"
@@ -8,9 +9,11 @@ window.addEventListener('load', () => {
   }, 600)
   setTimeout(function () {
     document.querySelector(".body-load-after").style.overflowY = "hidden"
-    document.body.style.overflowY = 'visible'
-    document.querySelector(".load-main").style.display = "none"
-  }, 800)
+    document.querySelector('.navbar-dark').scrollIntoView({ behavior: 'smooth' })
+    setTimeout(function () {
+      document.querySelector(".load-main").style.display = "none"
+    }, 600)
+  }, 1400)
 })
 // следить за курсоро чтоб красиво менюшки переливались
 // console.clear()
@@ -65,7 +68,7 @@ window.onload = function () {
   setTimeout(function () {
     anime({
       targets: '.text-loading-overlay',
-      translateX: '100%',
+      translateX: '110%',
       duration: 1000,
       easing: 'easeInOutQuad',
       complete: function () {
@@ -75,7 +78,7 @@ window.onload = function () {
         })
       }
     })
-  }, 5000)
+  }, 800)
 }
 
 // language
@@ -83,30 +86,43 @@ let currentLanguage = 'en' // Начальный язык
 let translations = {} // Объект для хранения переводов
 
 function loadTranslations(lang) {
-    fetch(`translations/${lang}.json`)
-        .then(response => {
-            return response.json()
-        })
-        .then(data => {
-            translations[lang] = data // Сохраняем переводы в объект
-            updateText() // Обновляем текст после загрузки
-        })
+  fetch(`translations/${lang}.json`)
+    .then(response => {
+      return response.json()
+    })
+    .then(data => {
+      translations[lang] = data // Сохраняем переводы в объект
+      if (currentLanguage === lang) {
+        updateText(); // Обновляем текст после загрузки
+      }
+    })
 }
 
 function toggleLanguage() {
-    currentLanguage = currentLanguage === 'en' ? 'ua' : 'en' // Переключаем язык
+  currentLanguage = currentLanguage === 'en' ? 'ua' : 'en' // Переключаем язык
+  if (!translations[currentLanguage]) {
+    loadTranslations(currentLanguage) // Загружаем переводы, если их еще нет
+  } else {
     updateText()
+  }
 }
 
 function updateText() {
+  if (translations[currentLanguage]) {
     document.querySelectorAll('[data-lang]').forEach(el => {
-        el.innerHTML = translations[currentLanguage][el.getAttribute('data-lang')]
-    })
+      const translationKey = el.getAttribute('data-lang')
+      if (translations[currentLanguage][translationKey]) {
+        el.innerHTML = translations[currentLanguage][translationKey]
+      }
+    });
+  }
 }
 
 // Загружаем переводы для начального языка
 loadTranslations(currentLanguage)
 
+// icon reload
 
-// Установить начальный язык
-updateText()
+document.querySelector(".icon").addEventListener("click", function () {
+  location.reload()
+})
