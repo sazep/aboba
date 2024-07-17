@@ -3,5 +3,17 @@
     "Products": "Products",
     "Project": "Project",
     "Link": "Link",
-    "Language": "English"
+    "Language": "English <img class='ico' src='src/svg/flag_gb.svg' width='30' height='30'>",
+    "Basic": "Basic",
+    "Pro": "Pro",
+    "Ultimate": "Ultimate",
+    "Email support": "Email support",
+    "Priority Email support": "Priority Email support",
+    "24/7 Priority support": "24/7 Priority support",
+    "Get Started": "Get Started",
+    "Upgrade to Pro": "Upgrade to Pro",
+    "Go Ultimate": "Go Ultimate",
+    "Partner with us": "Partner with us",
+    "Join our team": "Join our team",
+    "Privacy Policy": "Privacy Policy"
 }

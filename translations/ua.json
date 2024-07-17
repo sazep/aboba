@@ -3,5 +3,17 @@
     "Products": "Товари",
     "Project": "Проекти",
     "Link": "Посилання",
-    "Language": "Українська"
+    "Language": "Українська <img class='ico' src='src/svg/flag_ua.svg' width='30' height='30'>",
+    "Start": "Start",
+    "Pro": "Pro",
+    "Ultimate": "Ultimate",
+    "Email support": "Підтримка електронною поштою",
+    "Priority Email support": "Пріоритетна підтримка електронною поштою",
+    "24/7 Priority support": "24/7 Пріоритетна підтримка електронною поштою",
+    "Get Started": "Почати",
+    "Upgrade to Pro": "Перейти на професійний рівень",
+    "Go Ultimate": "Перейти до максимального тарифу",
+    "Partner with us": "Співпрацюйте з нами",
+    "Join our team": "Приєднуйтесь до нашої команди",
+    "Privacy Policy": "Політика конфіденційності"
 }

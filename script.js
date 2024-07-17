@@ -79,33 +79,33 @@ window.onload = function () {
 }
 
 // language
-let currentLanguage = 'en'; // Начальный язык
-let translations = {}; // Объект для хранения переводов
+let currentLanguage = 'en' // Начальный язык
+let translations = {} // Объект для хранения переводов
 
 function loadTranslations(lang) {
     fetch(`translations/${lang}.json`)
         .then(response => {
-            return response.json();
+            return response.json()
         })
         .then(data => {
-            translations[lang] = data; // Сохраняем переводы в объект
-            updateText(); // Обновляем текст после загрузки
+            translations[lang] = data // Сохраняем переводы в объект
+            updateText() // Обновляем текст после загрузки
         })
 }
 
 function toggleLanguage() {
-    currentLanguage = currentLanguage === 'en' ? 'ua' : 'en'; // Переключаем язык
-    updateText();
+    currentLanguage = currentLanguage === 'en' ? 'ua' : 'en' // Переключаем язык
+    updateText()
 }
 
 function updateText() {
     document.querySelectorAll('[data-lang]').forEach(el => {
-        el.innerHTML = translations[currentLanguage][el.getAttribute('data-lang')];
-    });
+        el.innerHTML = translations[currentLanguage][el.getAttribute('data-lang')]
+    })
 }
 
 // Загружаем переводы для начального языка
-loadTranslations(currentLanguage);
+loadTranslations(currentLanguage)
 
 
 // Установить начальный язык
