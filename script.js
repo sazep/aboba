@@ -12,6 +12,18 @@ window.addEventListener('load', () => {
     document.querySelector('.navbar-dark').scrollIntoView({ behavior: 'smooth' })
     setTimeout(function () {
       document.querySelector(".load-main").style.display = "none"
+      // ANIM TEXT
+      setTimeout(function () {
+        anime({
+          targets: document.querySelectorAll(".text-loading-overlay"),
+          with: "0px",
+          left: "650px",
+          easing: "linear",
+          duration: 2000,
+        }).finihed.then(() => {
+          div2.style.display = "none"
+        })
+      }, 500)
     }, 600)
   }, 1400)
 })
@@ -64,22 +76,22 @@ cards.forEach(initOverlayCard)
 document.body.addEventListener("pointermove", applyOverlayMask)
 
 // анимация тексту
-window.onload = function () {
-  setTimeout(function () {
-    anime({
-      targets: '.text-loading-overlay',
-      translateX: '110%',
-      duration: 1000,
-      easing: 'easeInOutQuad',
-      complete: function () {
-        let hiddenTexts = document.querySelectorAll('.hidden-text')
-        hiddenTexts.forEach((text) => {
-          text.style.visibility = 'visible'
-        })
-      }
-    })
-  }, 800)
-}
+// window.onload = function () {
+//   setTimeout(function () {
+//     anime({
+//       targets: '.text-loading-overlay',
+//       translateX: '110%',
+//       duration: 1000,
+//       easing: 'easeInOutQuad',
+//       complete: function () {
+//         let hiddenTexts = document.querySelectorAll('.hidden-text')
+//         hiddenTexts.forEach((text) => {
+//           text.style.visibility = 'visible'
+//         })
+//       }
+//     })
+//   }, 800)
+// }
 
 // language
 let currentLanguage = 'en' // Начальный язык
