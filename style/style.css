@@ -19,6 +19,7 @@
     --loader-size: 50px;
     --loader-border-size: 4px;
     --loader-border-color: white;
+    /*  */
 }
 
 /* шрифт */
@@ -126,34 +127,6 @@ header {
     transition-delay: 0.1s;
 }
 
-/* 
-.header_left {
-    width: 65%;
-    height: 100%;
-    font-size: 3vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0 5vw;
-    box-sizing: border-box;
-    text-align: center;
-}
-
-
-.bio {
-    width: 60%;
-    margin: 0 auto;
-    line-height: 1.5;
-}
-
-.header_right {
-    width: 35%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */
 /* footer */
 
 * {
@@ -261,6 +234,9 @@ a {
 }
 
 /* main */
+/* .content {
+    display: none;
+} */
 
 ul {
     list-style: none;
@@ -278,6 +254,10 @@ ul {
     margin-bottom: 0.75em;
     text-align: center;
 }
+
+/* #Products {
+    display: none;
+} */
 
 .cards {
     position: relative;

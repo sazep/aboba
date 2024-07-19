@@ -16,19 +16,45 @@ window.addEventListener('load', () => {
       setTimeout(function () {
         anime({
           targets: document.querySelectorAll(".text-loading-overlay"),
-          with: "0px",
+          width: "0px",
           left: "650px",
           easing: "linear",
           duration: 2000,
-        }).finihed.then(() => {
-          div2.style.display = "none"
+        }).finished.then(() => {
+          document.querySelectorAll(".text-loading-overlay").forEach(el => {
+            el.style.display = "none"
+          })
         })
+        setTimeout(function () {
+          // анимация тексту
+          console.log()
+          let lets = document.querySelector('.text-loading-overlay-random-symbl').innerHTML.split("")
+          let special_symbos = "<#$%^&*█(░)-+!@=~>₴░█s".split("")
+
+          let container = document.getElementById('random-symbl')
+          container.innerHTML = ''
+
+          lets.forEach((letter, index) => {
+            let span = document.createElement('span')
+            span.classList.add('letter')
+            span.innerHTML = special_symbos[Math.floor(Math.random() * special_symbos.length)]
+            container.appendChild(span)
+
+            let interval = setInterval(() => {
+              span.innerHTML = special_symbos[Math.floor(Math.random() * special_symbos.length)]
+            }, 80)
+
+            setTimeout(() => {
+              clearInterval(interval)
+              span.innerHTML = letter
+            }, 2000 + index * 70)
+          })
+        },500)
       }, 500)
     }, 600)
   }, 1400)
 })
 // следить за курсоро чтоб красиво менюшки переливались
-// console.clear()
 
 let cardsContainer = document.querySelector(".cards")
 let cardsContainerInner = document.querySelector(".cards__inner")
@@ -64,8 +90,8 @@ let observer = new ResizeObserver((entries) => {
   })
 })
 
-const initOverlayCard = (cardEl) => {
-  const overlayCard = document.createElement("div")
+let initOverlayCard = (cardEl) => {
+  let overlayCard = document.createElement("div")
   overlayCard.classList.add("card")
   createOverlayCta(overlayCard, cardEl.lastElementChild)
   overlay.append(overlayCard)
@@ -74,24 +100,6 @@ const initOverlayCard = (cardEl) => {
 
 cards.forEach(initOverlayCard)
 document.body.addEventListener("pointermove", applyOverlayMask)
-
-// анимация тексту
-// window.onload = function () {
-//   setTimeout(function () {
-//     anime({
-//       targets: '.text-loading-overlay',
-//       translateX: '110%',
-//       duration: 1000,
-//       easing: 'easeInOutQuad',
-//       complete: function () {
-//         let hiddenTexts = document.querySelectorAll('.hidden-text')
-//         hiddenTexts.forEach((text) => {
-//           text.style.visibility = 'visible'
-//         })
-//       }
-//     })
-//   }, 800)
-// }
 
 // language
 let currentLanguage = 'en' // Начальный язык
@@ -105,7 +113,7 @@ function loadTranslations(lang) {
     .then(data => {
       translations[lang] = data // Сохраняем переводы в объект
       if (currentLanguage === lang) {
-        updateText(); // Обновляем текст после загрузки
+        updateText() // Обновляем текст после загрузки
       }
     })
 }
@@ -122,11 +130,11 @@ function toggleLanguage() {
 function updateText() {
   if (translations[currentLanguage]) {
     document.querySelectorAll('[data-lang]').forEach(el => {
-      const translationKey = el.getAttribute('data-lang')
+      let translationKey = el.getAttribute('data-lang')
       if (translations[currentLanguage][translationKey]) {
         el.innerHTML = translations[currentLanguage][translationKey]
       }
-    });
+    })
   }
 }
 
@@ -138,3 +146,13 @@ loadTranslations(currentLanguage)
 document.querySelector(".icon").addEventListener("click", function () {
   location.reload()
 })
+
+// test main animation 
+// window.addEventListener('load', () => {
+//   let content = document.getElementById('Products')
+//   let contY
+//   do{
+//     contY = content.getBoundingClientRect().top
+//   }while(contY < 50)
+//   alert(contY)
+// })
