@@ -158,44 +158,45 @@
             </div>
 
             <div id="purchase-confirmation" class="hidden">
-    <div class="modal">
-        <form class="form">
-            <div class="price_dark">
-                <h1>Confirm Purchase</h1>
-                <h2>Total Price: <span id="total-price"></span></h2>
+                <div class="modal">
+                    <form class="form">
+                        <div class="price_dark">
+                            <h1 data-lang="Confirm Purchase" >Confirm Purchase</h1>
+                            <h2 data-lang="Total Price:" >Total Price: <span id="total-price"></span></h2>
+                        </div>
+                        <div class="credit-card-info--form">
+                            <div class="input_container">
+                                <label for="card_holder_name" class="input_label" data-lang="Card holder full name">Card holder full name</label>
+                                <input id="card_holder_name" class="input_field" type="text" name="input-name"
+                                    title="Input title" placeholder="Enter your full name" data-lang="Card holder full name">
+                            </div>
+                            <div class="input_container">
+                                <label for="card_number" class="input_label" data-lang="Card Number">Card Number</label>
+                                <input id="card_number" class="input_field" type="text" name="input-number"
+                                    title="Input title" placeholder="1234 5678 9012 3456" maxlength="16">
+                            </div>
+                            <div class="input_container">
+                                <label for="expiry_date" class="input_label" data-lang="Expiry Date">Expiry Date</label>
+                                <div class="split">
+                                    <input id="expiry_date" class="input_field" type="text" name="expiry-date"
+                                        title="Expiry Date" placeholder="01/23" maxlength="5">
+                                </div>
+                            </div>
+                            <div class="input_container">
+                                <label for="cvv" class="input_label">CVV</label>
+                                <div class="split cvv_container">
+                                    <input id="cvv" class="input_field" type="text" name="cvv" title="CVV" placeholder="CVV" maxlength="3" inputmode="numeric">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="purchase--btn" data-lang="Confirm">Confirm <svg class="svgIcon" viewBox="0 0 576 512">
+                                <path d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"></path>
+                            </svg></button>
+                        <button class="cancel--btn" data-lang="Cancel">Cancel</button>
+                    </form>
+                </div>
             </div>
-            <div class="credit-card-info--form">
-                <div class="input_container">
-                    <label for="card_holder_name" class="input_label">Card holder full name</label>
-                    <input id="card_holder_name" class="input_field" type="text" name="input-name"
-                        title="Input title" placeholder="Enter your full name">
-                </div>
-                <div class="input_container">
-                    <label for="card_number" class="input_label">Card Number</label>
-                    <input id="card_number" class="input_field" type="text" name="input-number"
-                        title="Input title" placeholder="0000 0000 0000 0000" maxlength="16">
-                </div>
-                <div class="input_container">
-                    <label for="expiry_date" class="input_label">Expiry Date</label>
-                    <div class="split">
-                        <input id="expiry_date" class="input_field" type="text" name="expiry-date"
-                            title="Expiry Date" placeholder="01/23" maxlength="5">
-                    </div>
-                </div>
-                <div class="input_container">
-                    <label for="cvv" class="input_label">CVV</label>
-                    <div class="split cvv_container">
-                        <input id="cvv" class="input_field" type="text" name="cvv" title="CVV" placeholder="CVV" maxlength="3" inputmode="numeric">
-                    </div>
-                </div>
-            </div>
-            <button class="purchase--btn">Confirm <svg class="svgIcon" viewBox="0 0 576 512">
-                    <path d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z"></path>
-                </svg></button>
-            <button class="cancel--btn">Cancel</button>
-        </form>
-    </div>
-</div>
+            
         </div>
 
         <div id="Project">
