@@ -22,32 +22,59 @@
     --loader-border-color: white;
     /* REEEED */
     --cancel-red: #F0544E;
+    /* Светлые цвета */
+    --color-light-bg: #4BC0EB;
+    --color-light-secondary: #f2f2f2;
 }
 
-/* шрифт */
-
+/* Основная тема по умолчанию (светлая) */
 body {
+    background-color: var(--color-light-bg);
+    color: var(--color-light-text);
+
     font-size: 14pt;
     margin: 0;
     padding: 0;
     font-family: "League Spartan", system-ui, sans-serif;
-    background-color: var(--main-dark);
-    color: var(--main-light-text);
     display: grid;
     place-items: center;
 }
 
+/* Темная тема */
+body.dark-theme {
+    background-color: var(--main-dark);
+    color: var(--main-light-text);  
+
+}
+
+/* Дополнительные элементы */
+.navbar-dark {
+    background-color: var(--color-dark-secondary);
+}
+
+.navbar-dark.light-theme {
+    background-color: var(--color-light-bg);
+}
+
+.navbar-dark.dark-theme {
+    background-color: var(--color-dark-secondary);
+}
+
+
+
+/* шрифт */
 header {
     font-size: 16pt;
     width: 100%;
-    background-color: var(--main-dark);
+    background-color: var(--background-main);
     display: flex;
-    color: #fff;
+    color: var(--color-main);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* nav-bar */
 .navbar-dark {
+    background-color: var(--background-main);
     width: 100%;
     float: left;
     display: flex;
@@ -86,7 +113,7 @@ header {
 }
 
 .nav-links:hover {
-    color: var(--main-light-text);
+    color: var(--color-main);
 }
 
 .nav-links::before,
@@ -101,7 +128,7 @@ header {
 
 .nav-links::after {
     left: 0;
-    background-color: #f25757;
+    background-color: var(--cancel-red);
 }
 
 .nav-links::before {
@@ -137,12 +164,11 @@ header {
 }
 
 footer {
-    background-color: var(--main-dark);
-    color: white;
+    background-color: var(--background-main);
     font-family: "League Spartan", system-ui, sans-serif;
     font-weight: 300;
     margin: 0;
-    color: #d5d5d5;
+    color: var(--color-main);
     font-size: calc(0.3 * var(--m));
 
     margin-top: 5%;
@@ -202,7 +228,7 @@ footer::before {
 
 .col2,
 .col3 {
-    background-color: #121212;
+    background-color: var(--background-main-teen-footer);
     border-radius: calc(0.5 * var(--m))
 }
 
@@ -235,17 +261,12 @@ a {
     align-items: center;
 }
 
-/* main */
-/* .content {
-    display: none;
-} */
-
 ul {
     list-style: none;
 }
 
 .main {
-    background-color: var(--main-dark);
+    background-color: var(--background-main);
     max-width: 75rem;
     min-height: 50vh;
     padding: 3em 1.5em;
@@ -257,11 +278,7 @@ ul {
     margin-bottom: 0.75em;
     text-align: center;
 }
-
-/* #Products {
-    display: none;
-} */
-
+/* Products */
 .cards {
     position: relative;
 }
@@ -282,7 +299,7 @@ ul {
     align-items: start;
     gap: 1.25em;
     color: #eceff1;
-    background-color: var(--main-card);
+    background-color: var(--background-main-teen);
     border: 1px solid var(--border-card);
     border-radius: 15px;
 }
@@ -342,8 +359,8 @@ ul {
     margin: 1em 0 0.5em 0;
     text-align: center;
     text-decoration: none;
-    color: #fff;
-    background-color: var(--main-dark);
+    color: var(--color-main);
+    background-color: var(--background-main);
     padding: 0.7em;
     border-radius: 10px;
     font-size: 1rem;
@@ -413,13 +430,13 @@ ul {
     align-items: center;
     width: 100%;
     height: 100vh;
-    background-color: var(--main-dark);
+    background-color: var(--background-main);
 }
 
 .loader {
     width: var(--loader-size);
     height: var(--loader-size);
-    border: var(--loader-border-size) solid var(--loader-border-color);
+    border: var(--loader-border-size) solid var(--color-main);
     border-top-color: transparent;
     border-right-color: transparent;
     border-bottom-color: transparent;
@@ -430,7 +447,7 @@ ul {
 
 .loader::before {
     content: "";
-    border: var(--loader-border-size) solid var(--loader-border-color);
+    border: var(--loader-border-size) solid var(--color-main);
     border-top-color: transparent;
     border-left-color: transparent;
     border-bottom-color: transparent;
@@ -469,7 +486,7 @@ ul {
     width: 600px;
     /* Фиксированная ширина */
     height: fit-content;
-    background: var(--main-light-text);
+    background: var(--background-pay);
     border-radius: 26px;
     padding: 3%;
     max-width: 90%;
@@ -534,51 +551,51 @@ ul {
 
 /* Стили для полей с ошибками */
 .input_field.error {
-    border: 1px solid red;
+    border: 1px solid var(--cancel-red);
     background-color: #ffe5e5;
 }
 
 .error-message {
-    color: red;
+    color: var(--cancel-red);
     font-size: 12px;
     margin-top: 5px;
 }
 
 .purchase--btn {
     height: 55px;
-    background: var(--main-light-teen);
+    background: var(--background-light-tee);
     border-radius: 11px;
     border: 0;
     outline: none;
-    color: var(--main-light-text);
+    color: var(--color-main);
     font-size: 13px;
     font-weight: 700;
-    background: var(--main-dark);
-    box-shadow: 0px 0px 0px 0px var(--main-light-text), 0px 0px 0px 0px #000000;
+    background: var(--background-main);
+    box-shadow: 0px 0px 0px 0px var(--color-main), 0px 0px 0px 0px #000000;
     transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
 }
 
 .purchase--btn:hover {
-    box-shadow: 0px 0px 0px 2px var(--main-light-text), 0px 0px 0px 4px #0000003a;
+    box-shadow: 0px 0px 0px 2px var(--background-main-teen), 0px 0px 0px 4px #0000003a;
 }
 
 .cancel--btn {
     height: 55px;
-    background: var(--main-light-teen);
+    background: var(--background-main-teen);
     border-radius: 11px;
     border: 0;
     outline: none;
-    color: var(--main-light-text);
+    color: var(--color-main);
     font-size: 13px;
     font-weight: 700;
-    background: var(--main-dark);
-    box-shadow: 0px 0px 0px 0px var(--main-light-text), 0px 0px 0px 0px #000000;
+    background: var(--background-main);
+    box-shadow: 0px 0px 0px 0px var(--color-main), 0px 0px 0px 0px #000000;
     transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
 }
 
 .cancel--btn:hover {
     background: var(--cancel-red);
-    box-shadow: 0px 0px 0px 2px var(--main-light-text), 0px 0px 0px 4px #0000003a;
+    box-shadow: 0px 0px 0px 2px var(--color-main), 0px 0px 0px 4px #0000003a;
 }
 
 /* Reset input number styles */
@@ -593,7 +610,7 @@ ul {
 }
 
 .price_dark {
-    color: var(--main-dark-text);
+    color: var(--main-dark);
 }
 
 .svgIcon {
