@@ -1,52 +1,53 @@
 window.addEventListener('load', () => {
   scrollTo(0, 0)
-  document.querySelector(".body-load-after").style.overflowY = "hidden"
-  
+  const bodyLoadAfter = document.querySelector(".body-load-after")
+  bodyLoadAfter.style.overflowY = "hidden"
+
   setTimeout(() => {
-    document.querySelector(".body-load-after").style.overflowY = "hidden"
+    bodyLoadAfter.style.overflowY = "hidden"
   }, 300)
-  
+
   setTimeout(() => {
-    document.querySelector(".body-load-after").style.overflowY = "hidden"
+    bodyLoadAfter.style.overflowY = "hidden"
   }, 600)
-  
+
   setTimeout(() => {
-    document.querySelector(".body-load-after").style.overflowY = "hidden"
+    bodyLoadAfter.style.overflowY = "hidden"
     document.querySelector('.navbar-dark').scrollIntoView({ behavior: 'smooth' })
-    
+
     setTimeout(() => {
       document.querySelector(".load-main").style.display = "none"
-      
+
       setTimeout(() => {
         anime({
           targets: document.querySelectorAll(".text-loading-overlay"),
           width: "0px",
           left: "650px",
           easing: "linear",
-          duration: 2000,
+          duration: 2000
         }).finished.then(() => {
           document.querySelectorAll(".text-loading-overlay").forEach(el => {
             el.style.display = "none"
           })
         })
-        
+
         setTimeout(() => {
-          let lets = document.querySelector('.text-loading-overlay-random-symbl').innerHTML.split("")
-          let special_symbos = "<#$%^&*█(░)-+!@=~>₴░█s".split("")
-          
-          let container = document.getElementById('random-symbl')
+          const lets = document.querySelector('.text-loading-overlay-random-symbl').innerHTML.split("")
+          const specialSymbols = "<#$%^&*█(░)-+!@=~>₴░█s".split("")
+
+          const container = document.getElementById('random-symbl')
           container.innerHTML = ''
-          
+
           lets.forEach((letter, index) => {
-            let span = document.createElement('span')
+            const span = document.createElement('span')
             span.classList.add('letter')
-            span.innerHTML = special_symbos[Math.floor(Math.random() * special_symbos.length)]
+            span.innerHTML = specialSymbols[Math.floor(Math.random() * specialSymbols.length)]
             container.appendChild(span)
-            
-            let interval = setInterval(() => {
-              span.innerHTML = special_symbos[Math.floor(Math.random() * special_symbos.length)]
+
+            const interval = setInterval(() => {
+              span.innerHTML = specialSymbols[Math.floor(Math.random() * specialSymbols.length)]
             }, 80)
-            
+
             setTimeout(() => {
               clearInterval(interval)
               span.innerHTML = letter
@@ -59,32 +60,31 @@ window.addEventListener('load', () => {
 })
 
 // Обработка курсора для эффекта наложения
-let cardsContainer = document.querySelector(".cards")
-let cards = Array.from(document.querySelectorAll(".card"))
-let overlay = document.querySelector(".overlay")
+const cardsContainer = document.querySelector(".cards")
+const cards = Array.from(document.querySelectorAll(".card"))
+const overlay = document.querySelector(".overlay")
 
-let applyOverlayMask = (e) => {
-  let overlayEl = e.currentTarget
-  let x = e.pageX - cardsContainer.offsetLeft
-  let y = e.pageY - cardsContainer.offsetTop
-  
+const applyOverlayMask = (e) => {
+  const overlayEl = e.currentTarget
+  const x = e.pageX - cardsContainer.offsetLeft
+  const y = e.pageY - cardsContainer.offsetTop
+
   overlayEl.style = `--opacity: 1; --x: ${x}px; --y:${y}px;`
 }
 
-let createOverlayCta = (overlayCard, ctaEl) => {
-  let overlayCta = document.createElement("div")
+const createOverlayCta = (overlayCard, ctaEl) => {
+  const overlayCta = document.createElement("div")
   overlayCta.classList.add("cta")
   overlayCta.textContent = ctaEl.textContent
   overlayCta.setAttribute("aria-hidden", true)
   overlayCard.append(overlayCta)
 }
 
-let observer = new ResizeObserver((entries) => {
+const observer = new ResizeObserver((entries) => {
   entries.forEach((entry) => {
-    let cardIndex = cards.indexOf(entry.target)
-    let width = entry.borderBoxSize[0].inlineSize
-    let height = entry.borderBoxSize[0].blockSize
-    
+    const cardIndex = cards.indexOf(entry.target)
+    const { inlineSize: width, blockSize: height } = entry.borderBoxSize[0]
+
     if (cardIndex >= 0) {
       overlay.children[cardIndex].style.width = `${width}px`
       overlay.children[cardIndex].style.height = `${height}px`
@@ -92,8 +92,8 @@ let observer = new ResizeObserver((entries) => {
   })
 })
 
-let initOverlayCard = (cardEl) => {
-  let overlayCard = document.createElement("div")
+const initOverlayCard = (cardEl) => {
+  const overlayCard = document.createElement("div")
   overlayCard.classList.add("card")
   createOverlayCta(overlayCard, cardEl.lastElementChild)
   overlay.append(overlayCard)
@@ -104,10 +104,10 @@ cards.forEach(initOverlayCard)
 document.body.addEventListener("pointermove", applyOverlayMask)
 
 // language
-let currentLanguage = 'en' // Начальный язык
+let currentLanguage = localStorage.getItem('language') || 'en' // Чтение языка из localStorage, по умолчанию 'en'
 let translations = {} // Объект для хранения переводов
 
-function loadTranslations(lang) {
+const loadTranslations = (lang) => {
   fetch(`translations/${lang}.json`)
     .then(response => response.json())
     .then(data => {
@@ -118,24 +118,33 @@ function loadTranslations(lang) {
     })
 }
 
-function toggleLanguage() {
-  currentLanguage = currentLanguage === 'en' ? 'ua' : 'en' // Переключаем язык
+const toggleLanguage = () => {
+  currentLanguage = currentLanguage === 'en' ? 'ua' : 'en'
+  localStorage.setItem('language', currentLanguage) // Сохраняем выбранный язык в localStorage
   if (!translations[currentLanguage]) {
-    loadTranslations(currentLanguage) // Загружаем переводы, если их еще нет
+    loadTranslations(currentLanguage)
   } else {
     updateText()
+    // Перезагрузим ошибки, если форма открыта
+    document.querySelectorAll('.input_field').forEach(el => el.classList.remove('error'))
+    document.querySelectorAll('.error-message').forEach(el => el.remove())
   }
 }
 
-function updateText() {
+const updateText = () => {
   if (translations[currentLanguage]) {
     document.querySelectorAll('[data-lang]').forEach(el => {
-      let translationKey = el.getAttribute('data-lang')
+      const translationKey = el.getAttribute('data-lang')
       if (translations[currentLanguage][translationKey]) {
         el.innerHTML = translations[currentLanguage][translationKey]
       }
-      if (el.hasAttribute('placeholder')) {
-        el.setAttribute('placeholder', translations[currentLanguage][translationKey] || el.getAttribute('placeholder'))
+    })
+
+    document.querySelectorAll('input[placeholder]').forEach(el => {
+      const placeholderText = el.getAttribute('placeholder')
+      const translationKey = Object.keys(translations[currentLanguage]).find(key => translations[currentLanguage][key] === placeholderText)
+      if (translationKey) {
+        el.setAttribute('placeholder', translations[currentLanguage][translationKey])
       }
     })
   }
@@ -151,6 +160,7 @@ document.querySelector(".icon").addEventListener("click", () => {
 })
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Определение переменных
   const buyButtons = document.querySelectorAll('.buy-btn')
   const cardsInner = document.querySelector('.cards__inner')
   const mainText = document.getElementById('AboutMe')
@@ -158,15 +168,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const totalPrice = document.getElementById('total-price')
   const cancelBtn = document.querySelector('.cancel--btn')
   const confirmBtn = document.querySelector('.purchase--btn')
+
   const expiryDateInput = document.querySelector('input[placeholder="01/23"]')
-  const cardNumberInput = document.querySelector('input[placeholder="0000 0000 0000 0000"]')
-  
+  const cardNumberInput = document.querySelector('input[placeholder="1234 5678 9012 3456"]')
+  const cardHolderName = document.querySelector('input[placeholder="Enter your full name"]')
+  const cvv = document.querySelector('input[placeholder="CVV"]')
+
+  // Обработка нажатия кнопок "Купить"
   buyButtons.forEach(button => {
     button.addEventListener('click', () => {
       const card = button.closest('.card')
       const price = card.dataset.price
-      
-      // Скрыть карточки и показать окно подтверждения
+
       cardsInner.classList.add('hidden')
       mainText.classList.add('hidden')
       purchaseConfirmation.classList.remove('hidden')
@@ -174,23 +187,25 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   })
 
-  // Убираем окно при нажатии на Cancel и перезагружаем страницу
+  // Обработка кнопки "Отмена"
   cancelBtn.addEventListener('click', () => {
-    window.location.reload()
+    cardsInner.classList.remove('hidden')
+    mainText.classList.remove('hidden')
+    purchaseConfirmation.classList.add('hidden')
   })
 
   // Автоматическое добавление `/` в поле даты истечения срока действия карты
   expiryDateInput.addEventListener('input', () => {
-    let value = expiryDateInput.value
+    const value = expiryDateInput.value
     if (value.length === 2 && !value.includes('/')) {
       expiryDateInput.value = `${value}/`
     }
   })
 
-  // Устанавливаем максимальную длину ввода для полей
+  // Установка максимальной длины ввода для полей
   cardNumberInput.addEventListener('input', () => {
-    if (cardNumberInput.value.length > 16) {
-      cardNumberInput.value = cardNumberInput.value.slice(0, 16)
+    if (cardNumberInput.value.length > 19) { // Учитывая пробелы в номере карты
+      cardNumberInput.value = cardNumberInput.value.slice(0, 19)
     }
   })
 
@@ -200,6 +215,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })
 
+  // Функция отображения ошибок
+  const showError = (element, key) => {
+    const existingError = element.nextElementSibling
+    if (existingError && existingError.classList.contains('error-message')) {
+      existingError.remove()
+    }
+
+    element.classList.add('error')
+    const errorElement = document.createElement('div')
+    errorElement.className = 'error-message'
+    errorElement.innerText = translations[currentLanguage][key] || key
+    element.parentNode.insertBefore(errorElement, element.nextSibling)
+  }
+
+  // Проверка полей формы
+  const validateForm = () => {
+    let hasError = false
+
+    // Проверка имени владельца карты
+    if (!cardHolderName.value.trim()) {
+      showError(cardHolderName, 'cardHolderNameError')
+      hasError = true
+    }
+
+    // Проверка номера карты
+    const cardNumberValue = cardNumberInput.value.replace(/\s+/g, '')
+    if (cardNumberValue.length !== 16 || !/^\d{16}$/.test(cardNumberValue)) {
+      showError(cardNumberInput, 'cardNumberError')
+      hasError = true
+    }
+
+    // Проверка CVV
+    if (cvv.value.length !== 3 || !/^\d{3}$/.test(cvv.value)) {
+      showError(cvv, 'cvvError')
+      hasError = true
+    }
+
+    // Проверка даты истечения срока
+    if (!/^\d{2}\/\d{2}$/.test(expiryDateInput.value)) {
+      showError(expiryDateInput, 'expiryDateError')
+      hasError = true
+    }
+
+    return !hasError
+  }
+
   // Обработчик для подтверждения покупки
   confirmBtn.addEventListener('click', (e) => {
     e.preventDefault() // Предотвратить отправку формы
@@ -208,58 +269,15 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.error-message').forEach(el => el.remove())
     document.querySelectorAll('.input_field').forEach(el => el.classList.remove('error'))
 
-    // Получаем значения полей
-    let cardHolderName = document.querySelector('input[placeholder="Enter your full name"]')
-    let cardNumber = document.querySelector('input[placeholder="0000 0000 0000 0000"]')
-    let expiryDate = expiryDateInput
-    let cvv = document.querySelector('input[placeholder="CVV"]')
-    
-    let hasError = false // Флаг для проверки наличия ошибок
+    // Валидация формы
+    if (validateForm()) {
+      // Временная проверка
+      alert('Purchase confirmed!')
 
-    // Проверка на заполненность имени владельца карты
-    if (!cardHolderName.value.trim()) {
-      showError(cardHolderName, 'Card holder name is required.')
-      hasError = true
+      // Скрываем окно после успешного подтверждения
+      purchaseConfirmation.classList.add('hidden')
+      cardsInner.classList.remove('hidden')
+      mainText.classList.remove('hidden')
     }
-
-    // Проверка номера карты (16 цифр)
-    let cardNumberValue = cardNumber.value.replace(/\s+/g, '')
-    if (cardNumberValue.length !== 16 || !/^\d{16}$/.test(cardNumberValue)) {
-      showError(cardNumber, 'Card number must be 16 digits.')
-      hasError = true
-    }
-
-    // Проверка CVV
-    if (cvv.value.length !== 3 || !/^\d{3}$/.test(cvv.value)) {
-      showError(cvv, 'CVV must be 3 digits.')
-      hasError = true
-    }
-
-    // Проверка даты истечения срока карты типа
-    if (!/^\d{2}\/\d{2}$/.test(expiryDate.value)) {
-      showError(expiryDate, 'Expiry Date must be in the format MM/YY.')
-      hasError = true
-    }
-
-    if (hasError) {
-      return
-    }
-
-    // Временная проверка
-    alert('Purchase confirmed!')
-
-    // Скрываем окно после успешного подтверждения
-    purchaseConfirmation.classList.add('hidden')
-    overlay.style.display = 'none'
-    cardsInner.classList.remove('hidden')
-    mainText.classList.remove('hidden')
   })
-
-  function showError(input, message) {
-    input.classList.add('error')
-    const errorMessage = document.createElement('div')
-    errorMessage.className = 'error-message'
-    errorMessage.textContent = message
-    input.parentElement.appendChild(errorMessage)
-  }
 })

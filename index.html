@@ -72,18 +72,9 @@
             <div class="right-end">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="icons-account" href="#account">
-                            <svg height="38.095242" width="40" viewBox="0 0 44.017969 41.921879" role="img"
-                                aria-labelledby="About me">
-                                <path
-                                    d="m 21.936719,23.52688 c 6.505156,0 11.781484,-5.27641 11.781484,-11.78148 C 33.718203,5.24032 28.441797,0 21.936719,0 15.431641,0 10.155234,5.27641 10.155234,11.7454 c 0,6.46898 5.276329,11.78148 11.781485,11.78148 z m 0,-20.455 c 4.77039,0 8.673515,3.90305 8.673515,8.67352 0,4.77046 -3.903125,8.67343 -8.673515,8.67343 -4.770391,0 -8.673516,-3.90304 -8.673516,-8.67351 0,-4.77047 3.903047,-8.67344 8.673516,-8.67344 z"
-                                    id="path2" class="path" style="fill:#c6c6c6;stroke-width:0.8;stroke:#1B1D1D;">
-                                </path>
-                                <path
-                                    d="M 1.5539844,41.92188 H 42.463984 c 0.867344,0 1.553985,-0.68664 1.553985,-1.55398 0,-8.13141 -6.613516,-14.7811 -14.781094,-14.7811 H 14.781094 C 6.6496875,25.5868 0,32.20032 0,40.3679 c 0,0.86734 0.68664062,1.55398 1.5539844,1.55398 z M 14.781094,28.69477 h 14.455781 c 5.926875,0 10.805703,4.40906 11.564688,10.11906 H 3.2164063 C 3.9753125,33.14 8.8542188,28.69477 14.781094,28.69477 Z"
-                                    id="path4" class="path" style="fill:#c6c6c6;stroke-width:0.8;stroke:#1B1D1D;">
-                                </path>
-                            </svg>
+                        <a class="icons-theme">
+                            <img id="pdpColorEditor-7340126" src="src/svg/white_theme.svg" width="64" height="64" loading="lazy" style="">
+                            <img id="pdpColorEditor-6620743" src="src/svg/dark_theme.svg" width="64" height="64" loading="lazy" style="">
                         </a>
                     </li>
                 </ul>
@@ -161,22 +152,25 @@
                 <div class="modal">
                     <form class="form">
                         <div class="price_dark">
-                            <h1>Confirm Purchase</h1>
-                            <h2>Total Price: </h2><h2 id="total-price"></h2>
+                            <h1 data-lang="Confirm Purchase">Confirm Purchase</h1>
+                            <h2 data-lang="Total Price:">Total Price: </h2>
+                            <h2 id="total-price"></h2>
                         </div>
                         <div class="credit-card-info--form">
                             <div class="input_container">
-                                <label for="card_holder_name" class="input_label">Card holder full name</label>
+                                <label for="card_holder_name" class="input_label" data-lang="Card holder full name">Card
+                                    holder full name</label>
                                 <input id="card_holder_name" class="input_field" type="text" name="input-name"
-                                    title="Input title" placeholder="Enter your full name">
+                                    title="Input title" placeholder="Enter your full name"
+                                    data-lang="Card holder full name">
                             </div>
                             <div class="input_container">
-                                <label for="card_number" class="input_label">Card Number</label>
+                                <label for="card_number" class="input_label" data-lang="Card Number">Card Number</label>
                                 <input id="card_number" class="input_field" type="text" name="input-number"
-                                    title="Input title" placeholder="0000 0000 0000 0000" maxlength="16">
+                                    title="Input title" placeholder="1234 5678 9012 3456" maxlength="16">
                             </div>
                             <div class="input_container">
-                                <label for="expiry_date" class="input_label">Expiry Date</label>
+                                <label for="expiry_date" class="input_label" data-lang="Expiry Date">Expiry Date</label>
                                 <div class="split">
                                     <input id="expiry_date" class="input_field" type="text" name="expiry-date"
                                         title="Expiry Date" placeholder="01/23" maxlength="5">
@@ -190,15 +184,17 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="purchase--btn">Confirm <svg class="svgIcon" viewBox="0 0 576 512">
+                        <button class="purchase--btn" data-lang="Confirm">Confirm <svg class="svgIcon"
+                                viewBox="0 0 576 512">
                                 <path
                                     d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z">
                                 </path>
                             </svg></button>
-                        <button class="cancel--btn">Cancel</button>
+                        <button class="cancel--btn" data-lang="Cancel">Cancel</button>
                     </form>
                 </div>
             </div>
+
         </div>
 
         <div id="Project">
