@@ -287,15 +287,23 @@ document.addEventListener('DOMContentLoaded', () => {
       document.documentElement.style.setProperty('--background-main-teen-footer', '#121212'); // Немного темнее основной фон
       document.documentElement.style.setProperty('--background-main-teen', '#2b2b35'); // Немного темнее основной фон
       document.documentElement.style.setProperty('--main-light-green-text', '#a0a0a0'); 
+      document.documentElement.style.setProperty('--btn-main', '#1c1c24'); // КНОПКИ 
     } else {
       // Светлые цвета для светлой темы
-      document.documentElement.style.setProperty('--background-main', '#4BC0EB');
+      document.documentElement.style.setProperty('--background-main', '#097E71');
       document.documentElement.style.setProperty('--background-pay', '#ffffff');
-      document.documentElement.style.setProperty('--color-main', '#000000');
-      document.documentElement.style.setProperty('--background-main-teen-footer', '#2F7892'); // Немного темнее основной фон
-      document.documentElement.style.setProperty('--background-main-teen', '#3f3f3f'); // Немного светлее основной фон
+      document.documentElement.style.setProperty('--color-main', '#ffffff');
+      document.documentElement.style.setProperty('--background-main-teen-footer', '#183531'); // Немного темнее основной фон
+      document.documentElement.style.setProperty('--background-main-teen', '#2C605A'); // Немного светлее основной фон
       document.documentElement.style.setProperty('--main-light-green-text', '#666666');
+      document.documentElement.style.setProperty('--btn-main', '#183531'); // КНОПКИ 
     }
+
+    // RGB: 9–126–113
+    // RGB: 23–116–106
+    // RGB: 35–106–98
+    // RGB: 44–96–90
+    // RGB: 51–86–82
 
     // Обновление видимости иконок
     lightThemeIcon.style.display = theme === 'dark-theme' ? 'none' : 'block';
