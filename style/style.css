@@ -666,7 +666,7 @@ ul {
 /*  для телефона хз */
 
 /* Общие стили для мобильных устройств */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 750px) {
     body {
         font-size: 12pt;
         display: block;
@@ -750,7 +750,6 @@ ul {
     }
 
     .left-start {
-        margin-left: 35%;
         width: min-content;
     }
 
