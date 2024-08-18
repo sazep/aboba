@@ -76,8 +76,9 @@ header {
 }
 
 /* nav-bar */
-.icon img{
-    width:180px;
+.icon{
+    margin: 50px;
+    width:64px;
     height:auto;
 }
 .navbar-dark {
@@ -89,7 +90,7 @@ header {
 }
 
 .left-start {
-    margin-top: 20px;
+    margin-top: 40px;
     float: left;
 }
 
@@ -191,62 +192,6 @@ header {
     cursor: pointer;
 }
 
-
-@media (max-width: 768px) {
-    .icon img{
-        width:180px;
-        height:auto;
-    }
-
-    .left-start {
-        align-items: center;
-        width: min-content;
-        margin-left: 25%;
-        margin-top: -25%;
-        float: left;
-    }
-
-    header{
-        height: 10px;
-    }
-    .right-center {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: var(--background-main);
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-        display: none;
-    }
-
-    .burger-menu{
-        padding: 3%;
-        display: flex;
-    }
-
-    .navbar-nav {
-        flex-direction: column;
-    }
-
-    .nav-item {
-        margin: 20px 0;
-    }
-
-    .nav-links {
-        font-size: 24px;
-    }
-
-    #main-nav.active {
-        display: flex;
-    }
-
-    .close-button {
-        display: flex;
-    }
-}
 
 /* footer */
 
@@ -728,7 +673,6 @@ ul {
     }
 
     .navbar-dark {
-        flex-direction: column;
         line-height: 150%;
     }
 
@@ -796,5 +740,59 @@ ul {
         font-size: 12px;
         height: 45px;
         /* Уменьшаем размер кнопок */
+    }
+}
+
+@media (max-width: 1400px) {
+    .icon{
+        width:64px;
+        height:auto;
+    }
+
+    .left-start {
+        margin-left: 35%;
+        width: min-content;
+    }
+
+    header {
+        font-size: 16pt;
+        display: flex;
+    }
+    .right-center {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--background-main);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        display: none;
+    }
+
+    .burger-menu{
+        padding: 3%;
+        display: flex;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+    }
+
+    .nav-item {
+        margin: 20px 0;
+    }
+
+    .nav-links {
+        font-size: 24px;
+    }
+
+    #main-nav.active {
+        display: flex;
+    }
+
+    .close-button {
+        display: flex;
     }
 }
