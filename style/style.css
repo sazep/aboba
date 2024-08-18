@@ -13,7 +13,7 @@
     /* footer */
     --m: 4rem;
     /* card */
-    --main-card: #2b2b2b;   
+    --main-card: #2b2b2b;
     --border-card: #eceff133;
     --hsl: var(--main-dark);
     /* loader */
@@ -29,20 +29,22 @@
 
 /* Основная тема по умолчанию (светлая) */
 body {
+    min-height: auto;
     font-size: 14pt;
-    margin: 0;
     padding: 0;
     font-family: "League Spartan", system-ui, sans-serif;
     display: grid;
     place-items: center;
+    margin: 0;
 }
 
 /* Темная тема */
 body.dark-theme {
     background-color: var(--main-dark);
-    color: var(--main-light-text);  
+    color: var(--main-light-text);
 
 }
+
 body.light-theme {
     background-color: var(--color-light-bg);
     color: var(--main-light-text)
@@ -74,6 +76,10 @@ header {
 }
 
 /* nav-bar */
+.icon img{
+    width:180px;
+    height:auto;
+}
 .navbar-dark {
     background-color: var(--background-main);
     width: 100%;
@@ -88,7 +94,7 @@ header {
 }
 
 .right-center {
-    width: 75%;
+    width: 100%;
 }
 
 .right-end {
@@ -157,6 +163,91 @@ header {
     transition-delay: 0.1s;
 }
 
+/* Стили для бургер-меню */
+.burger-menu {
+    display: none;
+    /* Скрываем бургер-меню на ПК */
+}
+
+.burger-button {
+    background-color: var(--background-main);
+    color: var(--color-main);
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Скрываем меню на мобильных устройствах */
+
+.close-button {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: var(--color-main);
+    cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+    .icon img{
+        width:180px;
+        height:auto;
+    }
+
+    .left-start {
+        align-items: center;
+        width: min-content;
+        margin-left: 25%;
+        margin-top: -25%;
+        float: left;
+    }
+
+    header{
+        height: 10px;
+    }
+    .right-center {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--background-main);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        display: none;
+    }
+
+    .burger-menu{
+        padding: 3%;
+        display: flex;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+    }
+
+    .nav-item {
+        margin: 20px 0;
+    }
+
+    .nav-links {
+        font-size: 24px;
+    }
+
+    #main-nav.active {
+        display: flex;
+    }
+
+    .close-button {
+        display: flex;
+    }
+}
+
 /* footer */
 
 * {
@@ -165,10 +256,10 @@ header {
 }
 
 footer {
+    flex: 0 0 auto;
     background-color: var(--background-main);
     font-family: "League Spartan", system-ui, sans-serif;
     font-weight: 300;
-    margin: 0;
     color: var(--color-main);
     font-size: calc(0.3 * var(--m));
 
@@ -182,6 +273,7 @@ footer {
     align-items: flex-end;
     padding: 5rem 2vw;
     position: relative;
+    margin: 0;
 }
 
 footer::before {
@@ -269,7 +361,7 @@ ul {
 .main {
     background-color: var(--background-main);
     max-width: 75rem;
-    min-height: 50vh;
+    min-height: 100%;
     padding: 3em 1.5em;
 }
 
@@ -279,6 +371,7 @@ ul {
     margin-bottom: 0.75em;
     text-align: center;
 }
+
 /* Products */
 .cards {
     position: relative;
@@ -331,7 +424,7 @@ ul {
 
 .card__bullets li::before {
     display: inline-block;
-    content: url(/src/svg/correct.svg);
+    content: url(https://sazep.github.io/aboba/src/svg/correct.svg);
     transform: translatey(0.25ch);
     margin-right: 1ch;
 }
@@ -631,22 +724,20 @@ ul {
 @media only screen and (max-width: 600px) {
     body {
         font-size: 12pt;
-        padding: 10px;
-        display: block; /* Изменяем на блочный элемент для мобильных */
+        display: block;
     }
 
     .navbar-dark {
-        flex-direction: column; /* Вертикальное расположение навигации */
+        flex-direction: column;
         line-height: 150%;
-        padding: 10px 0;
     }
 
     .nav-item {
-        margin: 15px 0; /* Уменьшаем отступы между элементами меню */
+        margin: 15px 0;
     }
 
     .nav-links {
-        font-size: 12pt; /* Уменьшаем размер шрифта */
+        font-size: 12pt;
     }
 
     header {
@@ -654,22 +745,15 @@ ul {
         text-align: center;
     }
 
-    .left-start,
-    .right-center,
-    .right-end {
-        width: 100%;
-        margin: 0; /* Убираем отступы для мобильных */
-        text-align: center; /* Центрируем элементы */
-    }
-
     .main {
         padding: 2em 1em;
-        max-width: 100%; /* Убираем ограничения по ширине */
+        max-width: 100%;
+
     }
 
     .cards__inner {
-        flex-direction: column; /* Располагаем карточки в колонку */
-        gap: 1.5em; /* Уменьшаем зазоры между карточками */
+        flex-direction: column;
+        gap: 1.5em;
     }
 
     .card {
@@ -683,9 +767,9 @@ ul {
     }
 
     footer {
-        flex-direction: column; /* Вертикальное расположение футера */
+        flex-direction: column;
         padding: 2rem 1rem;
-        text-align: center; /* Центрируем текст в футере */
+        text-align: center;
     }
 
     .col {
@@ -695,21 +779,22 @@ ul {
     }
 
     .social {
-        justify-content: center; /* Центрируем иконки социальных сетей */
+        justify-content: center;
     }
 
     .form {
-        padding: 15px; /* Уменьшаем внутренние отступы формы */
+        padding: 15px;
     }
 
     .modal {
-        width: 100%; /* Ширина модального окна под размер экрана */
+        width: 100%; 
         padding: 2%;
     }
 
     .purchase--btn,
     .cancel--btn {
         font-size: 12px;
-        height: 45px; /* Уменьшаем размер кнопок */
+        height: 45px;
+        /* Уменьшаем размер кнопок */
     }
 }

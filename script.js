@@ -1,5 +1,5 @@
 window.addEventListener('load', () => {
-  scrollTo(0, 0)  
+  scrollTo(0, 0)
 
   setTimeout(() => {
     document.querySelector('.navbar-dark').scrollIntoView({ behavior: 'smooth' })
@@ -44,8 +44,8 @@ window.addEventListener('load', () => {
           })
         }, 500)
       }, 500)
-    }, 600)
-  }, 1400)
+    }, 1000)
+  }, 1000)
 })
 
 // Обработка курсора для эффекта наложения
@@ -272,31 +272,31 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 document.addEventListener('DOMContentLoaded', () => {
-  const themeToggler = document.getElementById('theme-toggler');
-  const lightThemeIcon = document.getElementById('light-theme-icon');
-  const darkThemeIcon = document.getElementById('dark-theme-icon');
+  const themeToggler = document.getElementById('theme-toggler')
+  const lightThemeIcon = document.getElementById('light-theme-icon')
+  const darkThemeIcon = document.getElementById('dark-theme-icon')
 
   const applyTheme = (theme) => {
-    document.body.className = theme;
+    document.body.className = theme
 
     if (theme === 'dark-theme') {
       // Темные цвета для темной темы
-      document.documentElement.style.setProperty('--background-main', '#1c1c24');
-      document.documentElement.style.setProperty('--color-main', '#ffffff');
-      document.documentElement.style.setProperty('--background-pay', '#ffffff');
-      document.documentElement.style.setProperty('--background-main-teen-footer', '#121212'); // Немного темнее основной фон
-      document.documentElement.style.setProperty('--background-main-teen', '#2b2b35'); // Немного темнее основной фон
-      document.documentElement.style.setProperty('--main-light-green-text', '#a0a0a0'); 
-      document.documentElement.style.setProperty('--btn-main', '#1c1c24'); // КНОПКИ 
+      document.documentElement.style.setProperty('--background-main', '#1c1c24')
+      document.documentElement.style.setProperty('--color-main', '#ffffff')
+      document.documentElement.style.setProperty('--background-pay', '#ffffff')
+      document.documentElement.style.setProperty('--background-main-teen-footer', '#121212') // Немного темнее основной фон
+      document.documentElement.style.setProperty('--background-main-teen', '#2b2b35') // Немного темнее основной фон
+      document.documentElement.style.setProperty('--main-light-green-text', '#a0a0a0')
+      document.documentElement.style.setProperty('--btn-main', '#1c1c24') // КНОПКИ 
     } else {
       // Светлые цвета для светлой темы
-      document.documentElement.style.setProperty('--background-main', '#097E71');
-      document.documentElement.style.setProperty('--background-pay', '#ffffff');
-      document.documentElement.style.setProperty('--color-main', '#ffffff');
-      document.documentElement.style.setProperty('--background-main-teen-footer', '#183531'); // Немного темнее основной фон
-      document.documentElement.style.setProperty('--background-main-teen', '#2C605A'); // Немного светлее основной фон
-      document.documentElement.style.setProperty('--main-light-green-text', '#666666');
-      document.documentElement.style.setProperty('--btn-main', '#183531'); // КНОПКИ 
+      document.documentElement.style.setProperty('--background-main', '#097E71')
+      document.documentElement.style.setProperty('--background-pay', '#ffffff')
+      document.documentElement.style.setProperty('--color-main', '#ffffff')
+      document.documentElement.style.setProperty('--background-main-teen-footer', '#183531') // Немного темнее основной фон
+      document.documentElement.style.setProperty('--background-main-teen', '#2C605A') // Немного светлее основной фон
+      document.documentElement.style.setProperty('--main-light-green-text', '#666666')
+      document.documentElement.style.setProperty('--btn-main', '#183531') // КНОПКИ 
     }
 
     // RGB: 9–126–113
@@ -310,16 +310,34 @@ document.addEventListener('DOMContentLoaded', () => {
     darkThemeIcon.style.display = theme === 'dark-theme' ? 'block' : 'none';
 
     // Сохранение выбранной темы
-    localStorage.setItem('theme', theme);
+    localStorage.setItem('theme', theme)
   };
 
   // Загрузка сохранённой темы или установка темы по умолчанию
-  const savedTheme = localStorage.getItem('theme') || 'light-theme';
-  applyTheme(savedTheme);
+  const savedTheme = localStorage.getItem('theme') || 'light-theme'
+  applyTheme(savedTheme)
 
   // Переключение темы по клику
   themeToggler.addEventListener('click', () => {
-    const newTheme = document.body.classList.contains('dark-theme') ? 'light-theme' : 'dark-theme';
-    applyTheme(newTheme);
-  });
-});
+    const newTheme = document.body.classList.contains('dark-theme') ? 'light-theme' : 'dark-theme'
+    applyTheme(newTheme)
+  })
+})
+
+// меню для телефона
+document.getElementById('burger-button').addEventListener('click', function () {
+  const mainNav = document.getElementById('main-nav')
+  mainNav.classList.add('active')
+})
+
+document.getElementById('close-button').addEventListener('click', function () {
+  const mainNav = document.getElementById('main-nav')
+  mainNav.classList.remove('active')
+})
+
+document.querySelectorAll('#main-nav .navbar-nav .nav-links').forEach(link => {
+  link.addEventListener('click', function () {
+    const mainNav = document.getElementById('main-nav')
+    mainNav.classList.remove('active')
+  })
+})
