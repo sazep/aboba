@@ -1,5 +1,10 @@
+console.log(process.env.MONGODB_CONNECTION_STRING);
+require('dotenv').config();
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+
+// Загрузка переменных окружения
+require('dotenv').config();
 
 // Подключение к MongoDB через строку подключения из .env
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING, {
