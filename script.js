@@ -306,12 +306,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // RGB: 51–86–82
 
     // Обновление видимости иконок
-    lightThemeIcon.style.display = theme === 'dark-theme' ? 'none' : 'block'
-    darkThemeIcon.style.display = theme === 'dark-theme' ? 'block' : 'none'
+    lightThemeIcon.style.display = theme === 'dark-theme' ? 'none' : 'block';
+    darkThemeIcon.style.display = theme === 'dark-theme' ? 'block' : 'none';
 
     // Сохранение выбранной темы
     localStorage.setItem('theme', theme)
-  }
+  };
 
   // Загрузка сохранённой темы или установка темы по умолчанию
   const savedTheme = localStorage.getItem('theme') || 'light-theme'
@@ -341,57 +341,3 @@ document.querySelectorAll('#main-nav .navbar-nav .nav-links').forEach(link => {
     mainNav.classList.remove('active')
   })
 })
-
-// получить дата базу
-
-const mongoose = require('mongoose');
-
-const connectionString = process.env.MONGODB_CONNECTION_STRING;
-
-mongoose.connect(connectionString, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-// комент
-
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('reviewForm');
-  const reviewsContainer = document.getElementById('reviewsContainer');
-
-  // Отримання і відображення відгуків при завантаженні сторінки
-  fetch('/api/reviews')
-      .then(response => response.json())
-      .then(data => {
-          data.forEach(review => {
-              const reviewElement = document.createElement('div');
-              reviewElement.innerHTML = `<strong>${review.name}</strong>: ${review.comment}`;
-              reviewsContainer.appendChild(reviewElement);
-          });
-      });
-
-  // Обробка форми для додавання нового відгуку
-  form.addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      const name = form.elements['name'].value;
-      const comment = form.elements['comment'].value;
-
-      fetch('/api/reviews', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ name, comment })
-      })
-      .then(response => response.json())
-      .then(newReview => {
-          const reviewElement = document.createElement('div');
-          reviewElement.innerHTML = `<strong>${newReview.name}</strong>: ${newReview.comment}`;
-          reviewsContainer.appendChild(reviewElement);
-
-          // Очищення форми після відправлення
-          form.reset();
-      });
-  });
-});
