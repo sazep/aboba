@@ -306,12 +306,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // RGB: 51–86–82
 
     // Обновление видимости иконок
-    lightThemeIcon.style.display = theme === 'dark-theme' ? 'none' : 'block';
-    darkThemeIcon.style.display = theme === 'dark-theme' ? 'block' : 'none';
+    lightThemeIcon.style.display = theme === 'dark-theme' ? 'none' : 'block'
+    darkThemeIcon.style.display = theme === 'dark-theme' ? 'block' : 'none'
 
     // Сохранение выбранной темы
     localStorage.setItem('theme', theme)
-  };
+  }
 
   // Загрузка сохранённой темы или установка темы по умолчанию
   const savedTheme = localStorage.getItem('theme') || 'light-theme'
@@ -339,5 +339,57 @@ document.querySelectorAll('#main-nav .navbar-nav .nav-links').forEach(link => {
   link.addEventListener('click', function () {
     const mainNav = document.getElementById('main-nav')
     mainNav.classList.remove('active')
+  })
+})
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('review-form')
+  const reviewsList = document.getElementById('reviews-list')
+
+  // Получение и отображение отзывов при загрузке страницы
+  fetch('/api')
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok')
+      }
+      return response.json()
+    })
+    .then((data) => {
+      data.forEach((review) => {
+        const reviewElement = document.createElement('li')
+        reviewElement.innerHTML = `<strong>${review.name}</strong>: ${review.comment}`
+        reviewsList.appendChild(reviewElement)
+      })
+    })
+    .catch((error) => console.error('Error fetching reviews:', error))
+
+  // Обработка формы для добавления нового отзыва
+  form.addEventListener('submit', function (event) {
+    event.preventDefault()
+
+    const name = form.elements['name'].value
+    const comment = form.elements['comment'].value
+
+    fetch('/api', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name, comment })
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok')
+        }
+        return response.json()
+      })
+      .then((newReview) => {
+        const reviewElement = document.createElement('li')
+        reviewElement.innerHTML = `<strong>${newReview.name}</strong>: ${newReview.comment}`
+        reviewsList.appendChild(reviewElement)
+
+        // Очищение формы после отправления
+        form.reset()
+      })
+      .catch((error) => console.error('Error adding review:', error))
   })
 })
