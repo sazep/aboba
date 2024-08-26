@@ -21,28 +21,29 @@ window.addEventListener('load', () => {
         })
 
         setTimeout(() => {
-          const lets = document.querySelector('.text-loading-overlay-random-symbl').innerHTML.split("")
-          const specialSymbols = "<#$%^&*█(░)-+!@=~>₴░█s".split("")
+          let lets = document.querySelector('.text-loading-overlay-random-symbl').innerHTML.split("")
+          let special_symbos = "<#$%^&*█(░)-+!@=~>₴░█s".split("")
 
-          const container = document.getElementById('random-symbl')
+          
+          let container = document.getElementById('random-symbl')
           container.innerHTML = ''
 
           lets.forEach((letter, index) => {
-            const span = document.createElement('span')
+            let span = document.createElement('span')
             span.classList.add('letter')
-            span.innerHTML = specialSymbols[Math.floor(Math.random() * specialSymbols.length)]
+            span.innerHTML = special_symbos[Math.floor(Math.random() * special_symbos.length)]
             container.appendChild(span)
 
             const interval = setInterval(() => {
-              span.innerHTML = specialSymbols[Math.floor(Math.random() * specialSymbols.length)]
+              span.innerHTML = special_symbos[Math.floor(Math.random() * special_symbos.length)]
             }, 80)
 
             setTimeout(() => {
               clearInterval(interval)
               span.innerHTML = letter
-            }, 2000 + index * 70)
+            }, 2000 + index * 30)
           })
-        }, 500)
+        }, 200)
       }, 500)
     }, 1000)
   }, 1000)
@@ -270,8 +271,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })
 })
-
 document.addEventListener('DOMContentLoaded', () => {
+  localStorage.clear()
   const themeToggler = document.getElementById('theme-toggler')
   const lightThemeIcon = document.getElementById('light-theme-icon')
   const darkThemeIcon = document.getElementById('dark-theme-icon')
@@ -280,49 +281,53 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.className = theme
 
     if (theme === 'dark-theme') {
-      // Темные цвета для темной темы
       document.documentElement.style.setProperty('--background-main', '#1c1c24')
       document.documentElement.style.setProperty('--color-main', '#ffffff')
       document.documentElement.style.setProperty('--background-pay', '#ffffff')
-      document.documentElement.style.setProperty('--background-main-teen-footer', '#121212') // Немного темнее основной фон
-      document.documentElement.style.setProperty('--background-main-teen', '#2b2b35') // Немного темнее основной фон
+      document.documentElement.style.setProperty('--background-main-teen-footer', '#121212')
+      document.documentElement.style.setProperty('--background-main-teen', '#2b2b35')
       document.documentElement.style.setProperty('--main-light-green-text', '#a0a0a0')
-      document.documentElement.style.setProperty('--btn-main', '#1c1c24') // КНОПКИ 
+      document.documentElement.style.setProperty('--btn-main', '#1c1c24')
     } else {
-      // Светлые цвета для светлой темы
       document.documentElement.style.setProperty('--background-main', '#097E71')
       document.documentElement.style.setProperty('--background-pay', '#ffffff')
       document.documentElement.style.setProperty('--color-main', '#ffffff')
-      document.documentElement.style.setProperty('--background-main-teen-footer', '#183531') // Немного темнее основной фон
-      document.documentElement.style.setProperty('--background-main-teen', '#2C605A') // Немного светлее основной фон
+      document.documentElement.style.setProperty('--background-main-teen-footer', '#183531')
+      document.documentElement.style.setProperty('--background-main-teen', '#2C605A')
       document.documentElement.style.setProperty('--main-light-green-text', '#666666')
-      document.documentElement.style.setProperty('--btn-main', '#183531') // КНОПКИ 
+      document.documentElement.style.setProperty('--btn-main', '#183531')
     }
 
-    // RGB: 9–126–113
-    // RGB: 23–116–106
-    // RGB: 35–106–98
-    // RGB: 44–96–90
-    // RGB: 51–86–82
-
-    // Обновление видимости иконок
     lightThemeIcon.style.display = theme === 'dark-theme' ? 'none' : 'block'
     darkThemeIcon.style.display = theme === 'dark-theme' ? 'block' : 'none'
 
-    // Сохранение выбранной темы
-    localStorage.setItem('theme', theme)
+    // localStorage.setItem('theme', theme)
   }
 
-  // Загрузка сохранённой темы или установка темы по умолчанию
-  const savedTheme = localStorage.getItem('theme') || 'light-theme'
-  applyTheme(savedTheme)
+  const getPreferredTheme = () => {
+    const savedTheme = localStorage.getItem('theme')
+    if (savedTheme) {
+      return savedTheme
+    }
 
-  // Переключение темы по клику
+    // Проверяем системные настройки
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    if (prefersLight){
+      
+    }
+    return prefersLight ? 'light-theme':'dark-theme' 
+  }
+
+  const initialTheme = getPreferredTheme() // Если ничего не найдено, устанавливаем темную тему
+  applyTheme(initialTheme)
+
   themeToggler.addEventListener('click', () => {
     const newTheme = document.body.classList.contains('dark-theme') ? 'light-theme' : 'dark-theme'
     applyTheme(newTheme)
   })
 })
+
 
 // меню для телефона
 document.getElementById('burger-button').addEventListener('click', function () {
@@ -346,7 +351,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const reviewsList = document.getElementById('reviews-list')
 
   // Получение и отображение отзывов при загрузке страницы
-  fetch('/api')
+  fetch('/api/index.js')
     .then((response) => {
       if (!response.ok) {
         throw new Error('Network response was not ok')
@@ -369,7 +374,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const name = form.elements['name'].value
     const comment = form.elements['comment'].value
 
-    fetch('/api', {
+    fetch('/api/index.js', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
