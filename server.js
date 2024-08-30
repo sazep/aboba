@@ -9,7 +9,9 @@ const createPath = (page) => path.resolve(__dirname, '', `${page}.html`)
 
 let app = express()
 
-app.use('/public', express.static(path.join(__dirname, 'public')))
+app.use(express.static("public"))
+
+module.exports = app
 
 app.get("/", (req, res) => {
     const filePath = createPath("index")
@@ -35,8 +37,6 @@ app.post("/", urlParser, (req, res) => {
 
     res.redirect('/')
 })
-
-module.exports = app
 
 app.listen(port, () => {
     console.log(`http://localhost:${port}`)
