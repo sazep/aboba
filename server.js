@@ -13,6 +13,7 @@ app.use(express.static("public"))
 
 app.get("/", (req, res) => {
     res.sendFile(createPath("index"))
+    console.log(createPath("index"))
 })
 
 app.post("/", urlParser, (req, res) => {

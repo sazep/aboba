@@ -1,1 +1,3 @@
-.env
+package.json
+vercel.json
+package-lock.json
