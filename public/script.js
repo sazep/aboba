@@ -98,7 +98,7 @@ let currentLanguage = localStorage.getItem('language') || 'en' // Чтение �
 let translations = {} // Объект для хранения переводов
 
 const loadTranslations = (lang) => {
-  fetch(`translations/${lang}.json`)
+  fetch(`public/translations/${lang}.json`)
     .then(response => response.json())
     .then(data => {
       translations[lang] = data // Сохраняем переводы в объект
@@ -375,7 +375,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Получение и отображение отзывов при загрузке страницы
-  fetch('database/coments.json')
+  fetch(`public/database/coments.json`)
     .then((res) => res.json())
     .then((data) => {
       data.reverse().forEach((review) => {
@@ -384,7 +384,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         reviewElement.innerHTML = `
           <div style="display: flex; align-items: righ; margin-top: 10px;">
-            <img src="src/avatar.png" alt="avatar" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
+            <img src="public/src/avatar.png" alt="avatar" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
             <div>
               <div>
                 <strong style="color: var(--color-main);">${review.name}</strong>

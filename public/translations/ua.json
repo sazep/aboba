@@ -3,7 +3,7 @@
     "Products": "Товари",
     "Project": "Проекти",
     "Link": "Посилання",
-    "Language": "Українська <img class='ico' src='src/svg/flag_ua.svg' width='30' height='30'>",
+    "Language": "Українська <img class='ico' src='public/src/svg/flag_ua.svg' width='30' height='30'>",
     "Interactive FrontEnd Developer": "Розробник інтерактивного інтерфейсу",
     "Start": "Start",
     "Pro": "Pro",

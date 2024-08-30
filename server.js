@@ -9,7 +9,7 @@ const createPath = (page) => path.resolve(__dirname, '', `${page}.html`)
 
 let app = express()
 
-app.use(express.static("public"))
+app.use('/public', express.static(path.join(__dirname, 'public')))
 
 module.exports = app
 
