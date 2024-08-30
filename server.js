@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
     }
 })
 
-app.post("/", urlParser, (req, res) => {
+app.post("/", urlParser, (req, res) => { 
     let result = req.body
     result['data'] = Date.now()
 
