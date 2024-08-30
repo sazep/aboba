@@ -2,7 +2,7 @@
     "name": "aboba",
     "version": "1.0.0",
     "description": "aboba",
-    "main": "index.js",
+    "main": "server.js",
     "scripts": {
         "start": "node server.js ",
         "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,10 +12,6 @@
     "dependencies": { 
         "body-parser": "^1.20.2",
         "dotenv": "^16.4.5",
-        "express": "^4.19.2",
-        "mongod": "^2.0.0",
-        "mongodb": "^6.8.0",
-        "mongodb-core": "^3.2.7",
-        "mongoose": "^8.5.4"
+        "express": "^4.19.2"
     }
 }
