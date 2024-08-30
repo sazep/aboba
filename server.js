@@ -14,8 +14,15 @@ app.use(express.static("public"))
 module.exports = app
 
 app.get("/", (req, res) => {
-    res.sendFile(createPath("index"))
-    console.log(createPath("index"))
+    const filePath = createPath("index2")
+    
+    if (fs.existsSync(filePath)) {
+        res.sendFile(filePath)
+        console.log(`Serving ${filePath}`)
+    } else {
+        res.status(404).send("File not found")
+        console.error(`File not found: ${filePath}`)
+    }
 })
 
 app.post("/", urlParser, (req, res) => {
