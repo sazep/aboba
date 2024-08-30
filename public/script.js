@@ -24,7 +24,7 @@ window.addEventListener('load', () => {
           let lets = document.querySelector('.text-loading-overlay-random-symbl').innerHTML.split("")
           let special_symbos = "<#$%^&*█(░)-+!@=~>₴░█s".split("")
 
-          
+
           let container = document.getElementById('random-symbl')
           container.innerHTML = ''
 
@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.documentElement.style.setProperty('--background-main-teen', '#2C605A')
       document.documentElement.style.setProperty('--main-light-green-text', '#666666')
       document.documentElement.style.setProperty('--btn-main', '#183531')
-      document.documentElement.style.setProperty('--btn-coments','#183531')
+      document.documentElement.style.setProperty('--btn-coments', '#183531')
       document.documentElement.style.setProperty('--commetns-time', '#c2c2c2')
     }
 
@@ -315,10 +315,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Проверяем системные настройки
     const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    if (prefersLight){
-      
+    if (prefersLight) {
+
     }
-    return prefersLight ? 'light-theme':'dark-theme' 
+    return prefersLight ? 'light-theme' : 'dark-theme'
   }
 
   const initialTheme = getPreferredTheme() // Если ничего не найдено, устанавливаем темную тему
@@ -398,3 +398,41 @@ document.addEventListener('DOMContentLoaded', function () {
       })
     })
 })
+
+function openProject(project) {
+  const modal = document.getElementById('project-modal')
+  const title = document.getElementById('modal-title')
+  const description = document.getElementById('modal-description')
+  const author = document.getElementById('modal-author')
+  const image = document.getElementById('modal-image')
+
+  if (project === 'project1') {
+      title.textContent = 'Project Title 1'
+      description.textContent = 'Описание проекта 1...'
+      author.textContent = 'Автор(ы):'
+      image.src = 'public/src/project1.png'
+  } else if (project === 'project2') {
+      title.textContent = 'Project Title 2'
+      description.textContent = 'Описание проекта 2...'
+      author.textContent = 'Автор(ы):'
+      image.src = 'public/src/project2.png'
+  } else if (project === 'project3') {
+      title.textContent = 'Project Title 3'
+      description.textContent = 'Описание проекта 3...'
+      author.textContent = 'Автор(ы):'
+      image.src = 'public/src/project1.png'
+  }
+
+  modal.style.display = 'block';
+}
+
+function closeModal() {
+  const modal = document.getElementById('project-modal')
+  modal.style.display = 'none'
+}
+
+document.onkeydown = function (evt) {
+  if (evt.key === 'Escape') {
+      closeModal()
+  }
+}

@@ -214,7 +214,34 @@
 
         <div id="Project">
             <h1>Project</h1>
+            <div class="project-card" onclick="openProject('project1')">
+                <img src="public/src/project1.png" alt="Project 1">
+                <h2>Quiz</h2>
+                <p>Quiz to Improve Basic Math Skills and Enhance Accuracy</p>
+            </div>
+            <div class="project-card" onclick="openProject('project2')">
+                <img src="public/src/project2.png" alt="Project 2">
+                <h2>Loogik-Library</h2>
+                <p>Library Website for Book Selection and Download</p>
+            </div>
+            <div class="project-card" onclick="openProject('project3')">
+                <img src="public/src/project1.png" alt="Project 3">
+                <h2>Portfolio</h2>
+                <p>Explore my projects, services, client reviews, and get in touch.</p>
+            </div>
         </div>
+        
+        <div id="project-modal" class="modal" onclick="closeModal()">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img id="modal-image" class="modal-image" src="" alt="Project Image" />
+                <h2 id="modal-title">Project Title</h2>
+                <p id="modal-description">Project description goes here.</p>
+                <p id="modal-author">Author: John Doe</p>
+            </div>
+        </div>
+              
+        
         <div  id="Reviews">
             <h1>Reviews</h1>
             <form method="post" id="review-form">
