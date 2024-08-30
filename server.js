@@ -11,6 +11,8 @@ let app = express()
 
 app.use(express.static("public"))
 
+module.exports = app
+
 app.get("/", (req, res) => {
     res.sendFile(createPath("index"))
     console.log(createPath("index"))
