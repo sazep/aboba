@@ -14,7 +14,7 @@ app.use(express.static("public"))
 module.exports = app
 
 app.get("/", (req, res) => {
-    const filePath = createPath("index2")
+    const filePath = createPath("index")
     
     if (fs.existsSync(filePath)) {
         res.sendFile(filePath)
