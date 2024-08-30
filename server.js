@@ -4,7 +4,7 @@ const path = require("path")
 const bodyParser = require("body-parser")
 
 let urlParser = bodyParser.urlencoded({ extended: false })
-const port = 2090
+const port = process.env.PORT || 3000
 const createPath = (page) => path.resolve(__dirname, '', `${page}.html`)
 
 let app = express()
