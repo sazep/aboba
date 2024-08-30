@@ -272,7 +272,6 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 })
 document.addEventListener('DOMContentLoaded', () => {
-  localStorage.clear()
   const themeToggler = document.getElementById('theme-toggler')
   const lightThemeIcon = document.getElementById('light-theme-icon')
   const darkThemeIcon = document.getElementById('dark-theme-icon')
@@ -288,6 +287,8 @@ document.addEventListener('DOMContentLoaded', () => {
       document.documentElement.style.setProperty('--background-main-teen', '#2b2b35')
       document.documentElement.style.setProperty('--main-light-green-text', '#a0a0a0')
       document.documentElement.style.setProperty('--btn-main', '#1c1c24')
+      document.documentElement.style.setProperty('--btn-coments', '#111115')
+      document.documentElement.style.setProperty('--commetns-time', '#a0a0a0')
     } else {
       document.documentElement.style.setProperty('--background-main', '#097E71')
       document.documentElement.style.setProperty('--background-pay', '#ffffff')
@@ -296,12 +297,13 @@ document.addEventListener('DOMContentLoaded', () => {
       document.documentElement.style.setProperty('--background-main-teen', '#2C605A')
       document.documentElement.style.setProperty('--main-light-green-text', '#666666')
       document.documentElement.style.setProperty('--btn-main', '#183531')
+      document.documentElement.style.setProperty('--btn-coments','#183531')
+      document.documentElement.style.setProperty('--commetns-time', '#c2c2c2')
     }
 
     lightThemeIcon.style.display = theme === 'dark-theme' ? 'none' : 'block'
     darkThemeIcon.style.display = theme === 'dark-theme' ? 'block' : 'none'
-
-    // localStorage.setItem('theme', theme)
+    localStorage.setItem('theme', theme)
   }
 
   const getPreferredTheme = () => {
@@ -346,55 +348,53 @@ document.querySelectorAll('#main-nav .navbar-nav .nav-links').forEach(link => {
     mainNav.classList.remove('active')
   })
 })
+
+// отзывы
 document.addEventListener('DOMContentLoaded', function () {
-  const form = document.getElementById('review-form')
   const reviewsList = document.getElementById('reviews-list')
+
+  // Функция для форматирования времени
+  function timeAgo(data) {
+    const now = Date.now()
+    const seconds = Math.floor((now - data) / 1000)
+    const intervals = {
+      year: 31536000,
+      month: 2592000,
+      day: 86400,
+      hour: 3600,
+      minute: 60,
+    }
+
+    for (let [unit, value] of Object.entries(intervals)) {
+      const result = Math.floor(seconds / value)
+      if (result >= 1) {
+        return `${result} ${unit}${result > 1 ? 's' : ''} ago`
+      }
+    }
+    return 'just now'
+  }
+
+  // Получение и отображение отзывов при загрузке страницы
+  fetch('database/coments.json')
+    .then((res) => res.json())
+    .then((data) => {
+      data.reverse().forEach((review) => {
+        const reviewElement = document.createElement('li')
+        const timeString = timeAgo(review.data)
+
+        reviewElement.innerHTML = `
+          <div style="display: flex; align-items: righ; margin-top: 10px;">
+            <img src="src/avatar.png" alt="avatar" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
+            <div>
+              <div>
+                <strong style="color: var(--color-main);">${review.name}</strong>
+                <span style="color: var(--commetns-time); font-size: 0.9rem; margin-left: 10px;">${timeString}</span>
+              </div>
+              <div style="color: var(--color-main); margin-top: 5px;">${review.comment}</div>
+            </div>
+          </div>
+        `
+        reviewsList.appendChild(reviewElement)
+      })
+    })
 })
-//   // Получение и отображение отзывов при загрузке страницы
-//   fetch('/api/index.js')
-//     .then((response) => {
-//       if (!response.ok) {
-//         throw new Error('Network response was not ok')
-//       }
-//       return response.json()
-//     })
-//     .then((data) => {
-//       data.forEach((review) => {
-//         const reviewElement = document.createElement('li')
-//         reviewElement.innerHTML = `<strong>${review.name}</strong>: ${review.comment}`
-//         reviewsList.appendChild(reviewElement)
-//       })
-//     })
-//     .catch((error) => console.error('Error fetching reviews:', error))
-
-//   // Обработка формы для добавления нового отзыва
-//   form.addEventListener('submit', function (event) {
-//     event.preventDefault()
-
-//     const name = form.elements['name'].value
-//     const comment = form.elements['comment'].value
-
-//     fetch('/api/index.js', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify({ name, comment })
-//     })
-//       .then((response) => {
-//         if (!response.ok) {
-//           throw new Error('Network response was not ok')
-//         }
-//         return response.json()
-//       })
-//       .then((newReview) => {
-//         const reviewElement = document.createElement('li')
-//         reviewElement.innerHTML = `<strong>${newReview.name}</strong>: ${newReview.comment}`
-//         reviewsList.appendChild(reviewElement)
-
-//         // Очищение формы после отправления
-//         form.reset()
-//       })
-//       .catch((error) => console.error('Error adding review:', error))
-//   })
-// })

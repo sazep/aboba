@@ -25,6 +25,7 @@
     /* Светлые цвета */
     --color-light-bg: #097E71;
     --color-light-secondary: #f2f2f2;
+    --color-main: #fff
 }
 
 /* Основная тема по умолчанию (светлая) */
@@ -369,7 +370,7 @@ ul {
 
 .card__bullets li::before {
     display: inline-block;
-    content: url(https://sazep.github.io/aboba/src/svg/correct.svg);
+    content: url(https://sazep.github.io/aboba/public/src/svg/correct.svg);
     transform: translatey(0.25ch);
     margin-right: 1ch;
 }
@@ -743,7 +744,7 @@ ul {
     }
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1000px) {
     .icon{
         width:64px;
         height:auto;
@@ -799,27 +800,83 @@ ul {
 
 /* отзывы */
 
-#review-section {
+/* Общие стили для секции отзывов */
+#Reviews {
+    background-color: var(--background-main);
+    color: var(--color-main);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#Reviews h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--color-main);
+}
+
+#review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#review-form input[type="text"],
+#review-form textarea {
+    font-size:30px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--main-light-green-text);
+    background-color: var(--background-main-teen);
+    color: var(--color-main);
+}
+
+#review-form input[type="text"]::placeholder,
+#review-form textarea::placeholder {
+    color: var(--color-main);
+}
+
+#review-form button {
+    padding: 10px 20px;
+    background-color: var(--btn-coments);
+    color: var(--color-main);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#review-form button:hover {
+    background-color: var(--btn-main);
+}
+
+/* Стили для списка отзывов */
+#reviews-list {
+    list-style-type: none;
+    padding: 0;
     margin-top: 20px;
-  }
-  
-  #review-name, #review-text, #review-rating {
-    display: block;
+}
+
+#reviews-list li {
+    background-color: var(--background-main-teen);
+    color: var(--color-main);
+    padding: 15px;
+    border-radius: 5px;
     margin-bottom: 10px;
-    padding: 10px;
-    font-size: 16px;
-  }
-  
-  .review {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 10px;
-  }
-  
-  .review strong {
-    font-size: 18px;
-  }
-  
-  .review p {
-    margin: 5px 0;
-  }
+}
+
+/* Адаптация под темы */
+body.light-theme #Reviews,
+body.light-theme #review-form input[type="text"],
+body.light-theme #review-form textarea,
+body.light-theme #reviews-list li,
+body.light-theme #review-form button {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme #Reviews,
+body.dark-theme #review-form input[type="text"],
+body.dark-theme #review-form textarea,
+body.dark-theme #reviews-list li,
+body.dark-theme #review-form button {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
