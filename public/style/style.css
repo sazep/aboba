@@ -455,8 +455,12 @@ ul {
 .text-loading-mask {
     position: relative;
     overflow: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
     display: inline-block;
-    white-space: nowrap;
+}
+.main-hero-subtitle{
+    margin-bottom: 15px
 }
 
 .text-loading-overlay {
@@ -516,7 +520,8 @@ ul {
 
 /* оплата картой */
 .hidden {
-    display: none;
+
+    display: none !important;
 }
 
 #purchase-confirmation {
@@ -669,6 +674,7 @@ ul {
 /* Общие стили для мобильных устройств */
 @media only screen and (max-width: 750px) {
     body {
+        min-width: 500px;
         font-size: 12pt;
         display: block;
     }
@@ -795,6 +801,20 @@ ul {
     .close-button {
         display: flex;
     }
+    #Project {
+        display: flex !important;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+    .project-card {
+        width: 80% !important;
+        cursor: pointer;
+        height: 350px;
+    }
+    .modal-content {
+        margin: 25% auto !important;
+    }
 }
 
 
@@ -917,8 +937,8 @@ body.dark-theme #review-form button {
 .project-card img {
     max-width: 100%;
     border-radius: 10px;
-    height: 70%;
-    object-fit: cover;
+    height: 60%; /* Уменьшите высоту изображения в карточке */
+    object-fit: cover; /* Изображение будет заполнять отведенное пространство */
 }
 
 .project-card h2 {
@@ -933,25 +953,27 @@ body.dark-theme #review-form button {
 }
 
 /* Стили для модального окна */
-.modal {
+.modal-p {
+    margin: 0 auto;
     display: none;
     position: fixed;
     z-index: 1001;
     left: 0;
     top: 0;
-    min-width: 100%;
-    height: 100%;
-    overflow: auto;
+    min-width:100%;
+    min-height:100%;
+    overflow: hidden;
     background-color: rgba(0, 0, 0, 0.7);
 }
 
 .modal-content {
     background-color: var(--background-main);
-    margin: 15% auto;
+    margin: 3% auto;
     padding: 20px;
     border: 1px solid #888;
     border-radius: 10px;
-    width: 50%;
+    width: 100%;
+    max-width: 800px;
 }
 
 .modal-image {
@@ -964,4 +986,5 @@ body.dark-theme #review-form button {
     float: right;
     font-size: 28px;
     font-weight: bold;
+    cursor: pointer;
 }

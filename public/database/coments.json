@@ -1,1 +1,42 @@
-[{"name":"data","comment":"data","data":1724975803972},{"name":"1","comment":"1","data":1724975811316},{"name":"data","comment":"data","data":1724975818960},{"name":"ПОБЕДА","comment":"ПОБЕДА","data":1725006250744}]
+[
+    {
+        "name": "Олександр",
+        "comment": "Придбав базовий тариф за $12.99 і не можу натішитися! Створення мого веб-сайту пройшло швидко і легко. Основний дизайн виглядає чудово, а адаптивність сайту порадувала. Рекомендую!",
+        "data": 1725053327687
+    },
+    {
+        "name": "John",
+        "comment": "I purchased the basic plan for $12.99 and I’m thrilled! Creating my website was quick and easy. The basic design looks great, and the responsiveness is impressive. Highly recommended!",
+        "data": 1725635327687
+    },
+    {
+        "name": "Sarah",
+        "comment": "I opted for the professional plan at $24.99, and I have no regrets! The advanced design and improved SEO optimization have made my site much more visible. The priority email support was also a great help. Thank you!",
+        "data": 1726135327687
+    },
+    {
+        "name": "Michael",
+        "comment": "I went for the max plan at $39.99, and it was the best decision ever! Cross-platform development and custom solutions are truly impressive. The 24/7 support is a huge plus. I recommend it to everyone!",
+        "data": 1726735327687
+    },
+    {
+        "name": "Марія",
+        "comment": "Вибрала професійний тариф за $24.99 і не шкодую! Розширений дизайн і покращена оптимізація SEO зробили мій сайт помітнішим. Пріоритетна підтримка електронною поштою також дуже допомогла. Дякую!",
+        "data": 1727335327687
+    },
+    {
+        "name": "Сергій",
+        "comment": "Вибрав професійний тариф за $24.99, хоча спочатку не був впевнений, чи варто витрачати ці гроші. Але робота на хорошому рівні! Сайт виглядає добре, а оптимізація SEO приємно здивувала. Дякую! Хоча мені довелося кілька разів вносити правки, але на диво за це навіть не взяли грошей.",
+        "data": 1727935327687
+    },
+    {
+        "name": "Катерина",
+        "comment": "Спочатку сумнівалася, чи варто купувати базовий тариф за $12.99, але, врешті-решт, вирішила спробувати. Процес створення сайту був досить простим, хоча дизайн міг би бути трішки кращим. Загалом, результатом я задоволена.",
+        "data": 1728535327687
+    },
+    {
+        "name": "Віктор",
+        "comment": "Придбав максимальний тариф за $39.99, і це рішення виправдало себе! Розробка під мобільні пристрої та інтеграція API дійсно вражають. Я в захваті від підтримки 24/7. Дякую за чудову роботу!",
+        "data": 1729135327687
+    }
+]

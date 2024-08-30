@@ -1,20 +1,47 @@
 {
-    "project1":{
-        "name_ua":"",
-        "name_en":"",
-        "img":"",
-        "description":""
+    "project1": {
+        "title": {
+            "en": "Quiz to Improve Basic Math Skills and Enhance Accuracy",
+            "ua": "Квіз для покращення базових математичних навичок та вдосконалення точності"
+        },
+        "description": {
+            "en": "This interactive quiz is designed to help users sharpen their basic math skills. Through a series of engaging questions, participants can enhance their understanding of fundamental concepts and practice their accuracy in calculations. Perfect for students and anyone looking to refresh their math knowledge!",
+            "ua": "Цей інтерактивний квіз призначений для того, щоб допомогти користувачам покращити свої базові математичні навички. Завдяки серії цікавих питань учасники можуть поглибити свої знання основних концепцій і практикувати точність у розрахунках. Ідеально підходить для студентів та всіх, хто хоче освіжити свої знання з математики!"
+        },
+        "author": {
+            "en": "Author(s): sazep7",
+            "ua": "Автор(и): sazep7"
+        },
+        "image": "public/src/project1.png"
     },
-    "project2":{
-        "name_ua":"",
-        "name_en":"",
-        "img":"",
-        "description":""
+    "project2": {
+        "title": {
+            "en": "Library Website for Book Selection and Download",
+            "ua": "Сайт бібліотеки для вибору та завантаження книг"
+        },
+        "description": {
+            "en": "Our library website allows users to explore a diverse selection of books, save their favorites, and download them for offline reading. Users can also learn more about each book, including summaries, reviews, and author information. Whether you’re looking for fiction, non-fiction, or academic texts, our platform has something for everyone!",
+            "ua": "Наш сайт бібліотеки дозволяє користувачам досліджувати різноманітний вибір книг, зберігати улюблені та завантажувати їх для читання офлайн. Користувачі також можуть дізнатися більше про кожну книгу, включаючи анотації, відгуки та інформацію про авторів. Незалежно від того, шукаєте ви художню літературу, науково-популярні книги або навчальні матеріали, на нашій платформі є щось для кожного!"
+        },
+        "author": {
+            "en": "Author(s): sazep7, Dranikii, Gooogasol, MakSiLIaN1st, nemizyy",
+            "ua": "Автор(и): sazep7, Dranikii, Gooogasol, MakSiLIaN1st, nemizyy"
+        },
+        "image": "public/src/project2.png"
     },
-    "project3":{
-        "name_ua":"",
-        "name_en":"",
-        "img":"",
-        "description":""
+    "project3": {
+        "title": {
+            "en": "My Portfolio",
+            "ua": "Моє портфоліо"
+        },
+        "description": {
+            "en": "Explore my projects, services, client reviews, and get in touch.",
+            "ua": "Подивіться мої проекти, послуги, відгуки і зв'яжіться зі мною."
+        },
+        "author": {
+            "en": "Author(s): sazep7",
+            "ua": "Автор(и): sazep7"
+        },
+        "image": "public/src/project1.png"
     }
 }

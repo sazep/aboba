@@ -6,47 +6,32 @@ window.addEventListener('load', () => {
 
     setTimeout(() => {
       document.querySelector(".load-main").style.display = "none"
+    }, 1000)
+    setTimeout(() => {
+      let lets = document.querySelector('.text-loading-overlay-random-symbl').innerHTML.split("")
+      let special_symbos = "<#$%^&*█(░)-+!@=~>₴░█s".split("")
 
-      setTimeout(() => {
-        anime({
-          targets: document.querySelectorAll(".text-loading-overlay"),
-          width: "0px",
-          left: "650px",
-          easing: "linear",
-          duration: 2000
-        }).finished.then(() => {
-          document.querySelectorAll(".text-loading-overlay").forEach(el => {
-            el.style.display = "none"
-          })
-        })
+
+      let container = document.getElementById('random-symbl')
+      container.innerHTML = ''
+
+      lets.forEach((letter, index) => {
+        let span = document.createElement('span')
+        span.classList.add('letter')
+        span.innerHTML = special_symbos[Math.floor(Math.random() * special_symbos.length)]
+        container.appendChild(span)
+
+        const interval = setInterval(() => {
+          span.innerHTML = special_symbos[Math.floor(Math.random() * special_symbos.length)]
+        }, 70)
 
         setTimeout(() => {
-          let lets = document.querySelector('.text-loading-overlay-random-symbl').innerHTML.split("")
-          let special_symbos = "<#$%^&*█(░)-+!@=~>₴░█s".split("")
-
-
-          let container = document.getElementById('random-symbl')
-          container.innerHTML = ''
-
-          lets.forEach((letter, index) => {
-            let span = document.createElement('span')
-            span.classList.add('letter')
-            span.innerHTML = special_symbos[Math.floor(Math.random() * special_symbos.length)]
-            container.appendChild(span)
-
-            const interval = setInterval(() => {
-              span.innerHTML = special_symbos[Math.floor(Math.random() * special_symbos.length)]
-            }, 80)
-
-            setTimeout(() => {
-              clearInterval(interval)
-              span.innerHTML = letter
-            }, 2000 + index * 30)
-          })
-        }, 200)
-      }, 500)
-    }, 1000)
-  }, 1000)
+          clearInterval(interval)
+          span.innerHTML = letter
+        }, 2000 + index * 20)
+      })
+  }, 200)
+  }, 2000)
 })
 
 // Обработка курсора для эффекта наложения
@@ -154,6 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const buyButtons = document.querySelectorAll('.buy-btn')
   const cardsInner = document.querySelector('.cards__inner')
   const mainText = document.getElementById('AboutMe')
+  const Project = document.getElementById('Project')
+  const Reviews = document.getElementById('Reviews')
   const purchaseConfirmation = document.getElementById('purchase-confirmation')
   const totalPrice = document.getElementById('total-price')
   const cancelBtn = document.querySelector('.cancel--btn')
@@ -172,6 +159,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       cardsInner.classList.add('hidden')
       mainText.classList.add('hidden')
+      Project.classList.add('hidden')
+      Reviews.classList.add('hidden')
       purchaseConfirmation.classList.remove('hidden')
       totalPrice.textContent = `$${price}`
     })
@@ -181,6 +170,8 @@ document.addEventListener('DOMContentLoaded', () => {
   cancelBtn.addEventListener('click', () => {
     cardsInner.classList.remove('hidden')
     mainText.classList.remove('hidden')
+    Project.classList.remove('hidden')
+    Reviews.classList.remove('hidden')
     purchaseConfirmation.classList.add('hidden')
   })
 
@@ -268,6 +259,9 @@ document.addEventListener('DOMContentLoaded', () => {
       purchaseConfirmation.classList.add('hidden')
       cardsInner.classList.remove('hidden')
       mainText.classList.remove('hidden')
+      Project.classList.remove('hidden')
+      Reviews.classList.remove('hidden')
+      
     }
   })
 })
@@ -400,30 +394,26 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 function openProject(project) {
-  const modal = document.getElementById('project-modal')
-  const title = document.getElementById('modal-title')
-  const description = document.getElementById('modal-description')
-  const author = document.getElementById('modal-author')
-  const image = document.getElementById('modal-image')
+  const modal = document.getElementById('project-modal');
+  const title = document.getElementById('modal-title');
+  const description = document.getElementById('modal-description');
+  const author = document.getElementById('modal-author');
+  const image = document.getElementById('modal-image');
 
-  if (project === 'project1') {
-      title.textContent = 'Project Title 1'
-      description.textContent = 'Описание проекта 1...'
-      author.textContent = 'Автор(ы):'
-      image.src = 'public/src/project1.png'
-  } else if (project === 'project2') {
-      title.textContent = 'Project Title 2'
-      description.textContent = 'Описание проекта 2...'
-      author.textContent = 'Автор(ы):'
-      image.src = 'public/src/project2.png'
-  } else if (project === 'project3') {
-      title.textContent = 'Project Title 3'
-      description.textContent = 'Описание проекта 3...'
-      author.textContent = 'Автор(ы):'
-      image.src = 'public/src/project1.png'
-  }
+  const currentLang =  currentLanguage || localStorage.getItem('language');
 
-  modal.style.display = 'block';
+  fetch('public/database/project.json')
+      .then(response => response.json())
+      .then(data => {
+          const projectData = data[project];
+
+          title.textContent = projectData.title[currentLang];
+          description.textContent = projectData.description[currentLang];
+          author.textContent = projectData.author[currentLang];
+          image.src = projectData.image;
+
+          modal.style.display = 'block'
+      })
 }
 
 function closeModal() {
