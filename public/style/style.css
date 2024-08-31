@@ -989,7 +989,7 @@ body.dark-theme #review-form button {
     cursor: pointer;
 }
 
-.trash_btn, .like_btn {
+.dislike_btn, .like_btn {
     background-color: transparent;
     border: none;
     box-shadow: none;
