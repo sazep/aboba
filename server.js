@@ -8,7 +8,7 @@ dotenv.config()
 
 const urlParser = bodyParser.urlencoded({ extended: false })
 const jsonParser = bodyParser.json() // Middleware для парсинга JSON
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 10000
 const createPath = (page) => path.resolve(__dirname, '', `${page}.html`)
 
 let app = express()
