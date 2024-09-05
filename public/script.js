@@ -432,6 +432,8 @@ reviewsList.appendChild(reviewElement)
     })
 })
 
+
+// project проекты
 function openProject(project) {
   const modal = document.getElementById('project-modal')
   const title = document.getElementById('modal-title')
