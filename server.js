@@ -71,52 +71,6 @@ app.delete('/comments/:data', urlParser, jsonParser, async (req, res) => {
     }
 })
 
-// Маршрут для лайка
-app.post('/comments/:data/like', async (req, res) => {
-    const dataToLike = parseInt(req.params.data);
-
-    try {
-        let comments = await fs.readFile('public/database/coments.json', 'utf-8');
-        comments = JSON.parse(comments);
-
-        const comment = comments.find(c => c.data === dataToLike);
-        if (comment) {
-            comment.likes += 1;
-            await fs.writeFile('public/database/coments.json', JSON.stringify(comments));
-            console.log("Updated likes for comment:", comment)
-            res.json({ likes: comment.likes });
-        } else {
-            res.status(404).send('Комментарий не найден');
-        }
-    } catch (error) {
-        console.error('Ошибка при обработке лайка:', error);
-        res.status(500).send('Внутренняя ошибка сервера');
-    }
-});
-
-// Маршрут для дизлайка
-app.post('/comments/:data/dislike', async (req, res) => {
-    const dataToDislike = parseInt(req.params.data);
-
-    try {
-        let comments = await fs.readFile('public/database/coments.json', 'utf-8');
-        comments = JSON.parse(comments);
-
-        const comment = comments.find(c => c.data === dataToDislike);
-        if (comment) {
-            comment.dislikes += 1;
-            await fs.writeFile('public/database/coments.json', JSON.stringify(comments));
-            console.log("Updated dislikes for comment:", comment)
-            res.json({ dislikes: comment.dislikes });
-        } else {
-            res.status(404).send('Комментарий не найден');
-        }
-    } catch (error) {
-        console.error('Ошибка при обработке дизлайка:', error);
-        res.status(500).send('Внутренняя ошибка сервера');
-    }
-});
-
 app.listen(port, () => {
     console.log(`Сервер запущен на http://localhost:${port}`)
 })
