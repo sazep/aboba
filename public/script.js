@@ -94,7 +94,7 @@ const loadTranslations = (lang) => {
 }
 
 const toggleLanguage = () => {
-  currentLanguage = currentLanguage === 'en' ? 'ua' : 'en'
+  currentLanguage = currentLanguage === 'en' ? 'ua' : currentLanguage === 'ua' ? 'de' : currentLanguage === 'de' ? 'ja' : 'en'
   localStorage.setItem('language', currentLanguage) // Сохраняем выбранный язык в localStorage
   if (!translations[currentLanguage]) {
     loadTranslations(currentLanguage)
@@ -433,7 +433,7 @@ reviewsList.appendChild(reviewElement)
 })
 
 
-// project проекты
+// project 
 function openProject(project) {
   const modal = document.getElementById('project-modal')
   const title = document.getElementById('modal-title')

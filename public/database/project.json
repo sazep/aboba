@@ -2,46 +2,64 @@
     "project1": {
         "title": {
             "en": "Quiz to Improve Basic Math Skills and Enhance Accuracy",
-            "ua": "Квіз для покращення базових математичних навичок та вдосконалення точності"
+            "ua": "Квіз для покращення базових математичних навичок та вдосконалення точності",
+            "de": "Quiz zur Verbesserung grundlegender mathematischer Fähigkeiten und zur Steigerung der Genauigkeit",
+            "ja": "基本的な数学スキルを向上させ、正確性を高めるためのクイズ"
         },
         "description": {
             "en": "This interactive quiz is designed to help users sharpen their basic math skills. Through a series of engaging questions, participants can enhance their understanding of fundamental concepts and practice their accuracy in calculations. Perfect for students and anyone looking to refresh their math knowledge!",
-            "ua": "Цей інтерактивний квіз призначений для того, щоб допомогти користувачам покращити свої базові математичні навички. Завдяки серії цікавих питань учасники можуть поглибити свої знання основних концепцій і практикувати точність у розрахунках. Ідеально підходить для студентів та всіх, хто хоче освіжити свої знання з математики!"
+            "ua": "Цей інтерактивний квіз призначений для того, щоб допомогти користувачам покращити свої базові математичні навички. Завдяки серії цікавих питань учасники можуть поглибити свої знання основних концепцій і практикувати точність у розрахунках. Ідеально підходить для студентів та всіх, хто хоче освіжити свої знання з математики!",
+            "de": "Dieses interaktive Quiz soll Benutzern helfen, ihre grundlegenden mathematischen Fähigkeiten zu schärfen. Durch eine Reihe ansprechender Fragen können die Teilnehmer ihr Verständnis grundlegender Konzepte verbessern und ihre Genauigkeit bei Berechnungen üben. Perfekt für Schüler und alle, die ihr Mathematikwissen auffrischen möchten!",
+            "ja": "このインタラクティブなクイズは、ユーザーが基本的な数学スキルを向上させるのを助けるために設計されています。魅力的な質問の一連を通じて、参加者は基本的な概念の理解を深め、計算の正確性を練習することができます。学生や数学の知識をリフレッシュしたい人に最適です！"
         },
         "author": {
             "en": "Author(s): sazep7",
-            "ua": "Автор(и): sazep7"
+            "ua": "Автор(и): sazep7",
+            "de": "Autor(en): sazep7",
+            "ja": "著者：sazep7"
         },
         "image": "public/src/project1.png"
     },
     "project2": {
         "title": {
             "en": "Library Website for Book Selection and Download",
-            "ua": "Сайт бібліотеки для вибору та завантаження книг"
+            "ua": "Сайт бібліотеки для вибору та завантаження книг",
+            "de": "Bibliothekswebsite zur Buchauswahl und -download",
+            "ja": "書籍選択とダウンロードのためのライブラリウェブサイト"
         },
         "description": {
             "en": "Our library website allows users to explore a diverse selection of books, save their favorites, and download them for offline reading. Users can also learn more about each book, including summaries, reviews, and author information. Whether you’re looking for fiction, non-fiction, or academic texts, our platform has something for everyone!",
-            "ua": "Наш сайт бібліотеки дозволяє користувачам досліджувати різноманітний вибір книг, зберігати улюблені та завантажувати їх для читання офлайн. Користувачі також можуть дізнатися більше про кожну книгу, включаючи анотації, відгуки та інформацію про авторів. Незалежно від того, шукаєте ви художню літературу, науково-популярні книги або навчальні матеріали, на нашій платформі є щось для кожного!"
+            "ua": "Наш сайт бібліотеки дозволяє користувачам досліджувати різноманітний вибір книг, зберігати улюблені та завантажувати їх для читання офлайн. Користувачі також можуть дізнатися більше про кожну книгу, включаючи анотації, відгуки та інформацію про авторів. Незалежно від того, шукаєте ви художню літературу, науково-популярні книги або навчальні матеріали, на нашій платформі є щось для кожного!",
+            "de": "Unsere Bibliothekswebsite ermöglicht es Benutzern, eine vielfältige Auswahl an Büchern zu erkunden, ihre Favoriten zu speichern und sie für das Offline-Lesen herunterzuladen. Benutzer können auch mehr über jedes Buch erfahren, einschließlich Zusammenfassungen, Bewertungen und Informationen über den Autor. Egal, ob Sie nach Belletristik, Sachliteratur oder akademischen Texten suchen, unsere Plattform hat für jeden etwas zu bieten!",
+            "ja": "私たちの図書館ウェブサイトでは、ユーザーがさまざまな本を探索し、お気に入りを保存し、オフラインで読むためにダウンロードできます。ユーザーは、各本の要約、レビュー、著者情報などについても学ぶことができます。フィクション、ノンフィクション、学術書を探している方には、私たちのプラットフォームにはすべての人のための何かがあります！"
         },
         "author": {
             "en": "Author(s): sazep7, Dranikii, Gooogasol, MakSiLIaN1st, nemizyy",
-            "ua": "Автор(и): sazep7, Dranikii, Gooogasol, MakSiLIaN1st, nemizyy"
+            "ua": "Автор(и): sazep7, Dranikii, Gooogasol, MakSiLIaN1st, nemizyy",
+            "de": "Autor(en): sazep7, Dranikii, Gooogasol, MakSiLIaN1st, nemizyy",
+            "ja": "著者：sazep7, Dranikii, Gooogasol, MakSiLIaN1st, nemizyy"
         },
         "image": "public/src/project2.png"
     },
     "project3": {
         "title": {
             "en": "My Portfolio",
-            "ua": "Моє портфоліо"
+            "ua": "Моє портфоліо",
+            "de": "Mein Portfolio",
+            "ja": "私のポートフォリオ"
         },
         "description": {
             "en": "Explore my projects, services, client reviews, and get in touch.",
-            "ua": "Подивіться мої проекти, послуги, відгуки і зв'яжіться зі мною."
+            "ua": "Подивіться мої проекти, послуги, відгуки і зв'яжіться зі мною.",
+            "de": "Entdecken Sie meine Projekte, Dienstleistungen, Kundenbewertungen und nehmen Sie Kontakt auf.",
+            "ja": "私のプロジェクト、サービス、顧客レビューを探索し、連絡してください。"
         },
         "author": {
             "en": "Author(s): sazep7",
-            "ua": "Автор(и): sazep7"
+            "ua": "Автор(и): sazep7",
+            "de": "Autor(en): sazep7",
+            "ja": "著者：sazep7"
         },
-        "image": "public/src/project1.png"
+        "image": "public/src/project3.png"
     }
 }
