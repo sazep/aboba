@@ -79,35 +79,46 @@ cards.forEach(initOverlayCard)
 document.body.addEventListener("pointermove", applyOverlayMask)
 
 // language
-let currentLanguage = localStorage.getItem('language') || 'en' // Чтение языка из localStorage, по умолчанию 'en'
-let translations = {} // Объект для хранения переводов
+let currentLanguage = localStorage.getItem('language') || 'en' // зчитуємо з локал сторейдж мову якщо нему тоді англ
+let translations = {} // створюємо обьєкт для зберігання перекладу
 
 const loadTranslations = (lang) => {
   fetch(`public/translations/${lang}.json`)
     .then(response => response.json())
     .then(data => {
-      translations[lang] = data // Сохраняем переводы в объект
+      translations[lang] = data // сохраняєм переклад в обьєкт
       if (currentLanguage === lang) {
-        updateText() // Обновляем текст после загрузки
+        updateText() // обновлюємо текст
       }
     })
 }
 
+// Функція для перемикання мови на сайті
 const toggleLanguage = () => {
+  // Перемикаємо мову між англійською, українською, німецькою та японською
   currentLanguage = currentLanguage === 'en' ? 'ua' : currentLanguage === 'ua' ? 'de' : currentLanguage === 'de' ? 'ja' : 'en'
-  localStorage.setItem('language', currentLanguage) // Сохраняем выбранный язык в localStorage
+
+  // Зберігаємо обрану мову в локальне сховище браузера, щоб вона залишалася після перезавантаження сторінки
+  localStorage.setItem('language', currentLanguage)
+
+  // Якщо переклад для вибраної мови ще не завантажений, завантажуємо його
   if (!translations[currentLanguage]) {
     loadTranslations(currentLanguage)
   } else {
+    // Якщо переклад вже є, оновлюємо текст на сторінці
     updateText()
-    // Перезагрузим ошибки, если форма открыта
+
+    // Якщо є відкриті форми з помилками, прибираємо повідомлення про помилки після зміни мови
     document.querySelectorAll('.input_field').forEach(el => el.classList.remove('error'))
     document.querySelectorAll('.error-message').forEach(el => el.remove())
   }
 }
 
+// Функція для оновлення тексту на сторінці відповідно до вибраної мови
 const updateText = () => {
+  // Перевіряємо, чи є переклади для поточної мови
   if (translations[currentLanguage]) {
+    // Знаходимо всі елементи з атрибутом data-lang і змінюємо їх текст на перекладений
     document.querySelectorAll('[data-lang]').forEach(el => {
       const translationKey = el.getAttribute('data-lang')
       if (translations[currentLanguage][translationKey]) {
@@ -115,6 +126,7 @@ const updateText = () => {
       }
     })
 
+    // Оновлюємо текст підказок у полях вводу (placeholder), якщо такі є
     document.querySelectorAll('input[placeholder]').forEach(el => {
       const placeholderText = el.getAttribute('placeholder')
       const translationKey = Object.keys(translations[currentLanguage]).find(key => translations[currentLanguage][key] === placeholderText)
